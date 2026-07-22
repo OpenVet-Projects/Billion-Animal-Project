@@ -140,7 +140,7 @@ export const MOBILE_LAYOUT: DiagramLayout = {
 /** Contrast-safe palette for the zoonotic diagram (dark bg). */
 export const zoonoticPalette = {
   bg: colors.darkBg,
-  species: colors.slate,
+  species: colors.textOnDarkSoft,
   speciesHi: colors.textOnDark,
   shared: colors.teal,
   sharedHi: "#00d4b8",

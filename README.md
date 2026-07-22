@@ -1,28 +1,45 @@
-# The Billion Animal Project
+# The Billion Animal Study
 
-**Gather the medical records of one billion animals — so one billion animals can live longer.**
+**Gather the medical records of one billion animals — so animals live longer, healthier lives.**
 
-This repository is the public home for the project's open work.
+Public site for [billionanimals.org](https://www.billionanimals.org).
 
-## Status
+## Develop
 
-🚧 **More is coming soon.**
+```bash
+npm install
+npm run dev
+```
 
-We're preparing open source tools, data standards, and contribution guides for clinics, vets, researchers, and caretakers who want to help.
+```bash
+npm run build
+npm start
+```
 
-## Links
+Optional waitlist webhook (server-side):
 
-- Website: [billionanimals.org](https://billionanimals.org)
-- Contact: hello@billionanimals.org
+```bash
+WAITLIST_WEBHOOK_URL=https://example.com/hooks/waitlist
+```
 
-## What will live here
+## Stack
 
-- Contribution guidelines
-- Open tooling and standards as they are ready
-- Public documentation for the mission
+- React Router 8 (Remix successor)
+- Vite + TypeScript + Tailwind CSS v4
+- Deployable on Vercel / Node
 
-Until then: join the mission at [billionanimals.org](https://billionanimals.org/#join).
+## SEO & accessibility
+
+- `robots.txt` + `sitemap.xml`
+- Open Graph / Twitter cards + `/images/og.jpg`
+- JSON-LD (`Organization` + `WebSite`)
+- WCAG AA contrast tokens on cream and dark sections
+- Semantic landmarks, labeled join form, diagram `aria-label`s
+
+## Contact
+
+hello@billionanimals.org
 
 ---
 
-© The Billion Animal Project
+© The Billion Animal Study
