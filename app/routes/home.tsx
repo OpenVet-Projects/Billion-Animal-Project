@@ -59,7 +59,6 @@ export default function Home(_props: Route.ComponentProps) {
         fontFamily: '"Space Grotesk", ui-sans-serif, system-ui, sans-serif',
         backgroundColor: colors.cream,
         color: colors.navy,
-        overflowX: "hidden",
       }}
     >
       <nav className="ba-nav" aria-label="Primary">
