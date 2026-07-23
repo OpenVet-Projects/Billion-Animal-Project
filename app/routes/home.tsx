@@ -68,7 +68,7 @@ export default function Home(_props: Route.ComponentProps) {
           className="ba-nav-title"
           style={{ color: colors.navy, textDecoration: "none" }}
         >
-          Billion Animal Study
+          Billion Animal Project
         </a>
         <a
           href="#join"
