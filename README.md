@@ -2,7 +2,7 @@
 
 **Gather the medical records of one billion animals — so animals live longer, healthier lives.**
 
-Public site for [billionanimals.org](https://www.billionanimals.org).
+Site for [billionanimals.org](https://www.billionanimals.org).
 
 ## Develop
 
@@ -11,35 +11,26 @@ npm install
 npm run dev
 ```
 
+## Waitlist (Supabase) — what you do
+
+No webhook. Emails go into your existing Supabase project.
+
+1. In Supabase → **SQL** → run `supabase/waitlist.sql`
+2. In Vercel (or local `.env`) set:
+
 ```bash
-npm run build
-npm start
+SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 ```
 
-Optional waitlist webhook (server-side):
+Use the **service role** key (server only — never in the browser).
 
-```bash
-WAITLIST_WEBHOOK_URL=https://example.com/hooks/waitlist
-```
+3. Redeploy. Submit the form once. Check table `public.study_waitlist`.
 
 ## Stack
 
-- React Router 8 (Remix successor)
-- Vite + TypeScript + Tailwind CSS v4
-- Deployable on Vercel / Node
-
-## SEO & accessibility
-
-- `robots.txt` + `sitemap.xml`
-- Open Graph / Twitter cards + `/images/og.jpg`
-- JSON-LD (`Organization` + `WebSite`)
-- WCAG AA contrast tokens on cream and dark sections
-- Semantic landmarks, labeled join form, diagram `aria-label`s
+React Router 8 · Vite · TypeScript · Supabase waitlist
 
 ## Contact
 
 hello@billionanimals.org
-
----
-
-© The Billion Animal Study
