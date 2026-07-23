@@ -27,7 +27,8 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 
   const role = ROLES.has(type) ? type : "clinic";
-  const url = process.env.SUPABASE_URL;
+  const url =
+    process.env.SUPABASE_URL ?? "https://zgrktbhvjgzeidvtvbxz.supabase.co";
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!url || !serviceKey) {

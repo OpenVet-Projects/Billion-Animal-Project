@@ -13,17 +13,19 @@ npm run dev
 
 ## Waitlist (Supabase) — what you do
 
-No webhook. Emails go into your existing Supabase project.
+No webhook. Emails go into the **dev** Supabase project:
 
-1. In Supabase → **SQL** → run `supabase/waitlist.sql`
-2. In Vercel (or local `.env`) set:
+`https://zgrktbhvjgzeidvtvbxz.supabase.co`
+
+1. In Supabase → **SQL** → run `supabase/waitlist.sql` (once)
+2. Add **only this** env var on Vercel (Production + Preview) and local `.env`:
 
 ```bash
-SUPABASE_URL=https://YOUR_PROJECT.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 ```
 
-Use the **service role** key (server only — never in the browser).
+Get it from Supabase → Project Settings → API → `service_role` (secret).  
+Never put it in the browser.
 
 3. Redeploy. Submit the form once. Check table `public.study_waitlist`.
 
