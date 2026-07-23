@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useFetcher, useNavigation } from "react-router";
+import { BillionToOneSection } from "~/components/BillionToOneSection";
 import { LifespanSection } from "~/components/LifespanSection";
 import { SpeciesSection } from "~/components/SpeciesSection";
 import { ZoonoticSection } from "~/components/ZoonoticSection";
@@ -316,129 +317,78 @@ export default function Home(_props: Route.ComponentProps) {
         </div>
       </section>
 
+      <BillionToOneSection />
+
       <section
-        className="sec-pad"
+        className="sec-pad-sm"
         style={{
-          background: `linear-gradient(135deg, ${colors.navy} 0%, #0a3060 55%, ${colors.teal} 100%)`,
+          background: `linear-gradient(135deg, ${colors.navy} 0%, #0a3060 100%)`,
         }}
-        aria-labelledby="goal-heading"
+        aria-label="Study reach"
       >
-        <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
-          <p
-            className="reveal"
-            style={{
-              fontSize: 12,
-              fontWeight: 700,
-              letterSpacing: "0.25em",
-              textTransform: "uppercase",
-              color: colors.textOnDarkSoft,
-              marginBottom: 28,
-            }}
-          >
-            THE GOAL
-          </p>
-          <div
-            id="goal-heading"
-            className="reveal"
-            style={{
-              fontSize: "clamp(48px, 10vw, 120px)",
-              fontWeight: 900,
-              letterSpacing: "-0.04em",
-              lineHeight: 0.95,
-              color: "#5ee0d0",
-              marginBottom: 20,
-            }}
-          >
-            1,000,000,000
-          </div>
-          <p
-            className="reveal"
-            style={{
-              fontSize: "clamp(18px, 2.2vw, 26px)",
-              fontWeight: 900,
-              textTransform: "uppercase",
-              letterSpacing: "0.04em",
-              color: colors.textOnDark,
-              marginBottom: 16,
-            }}
-          >
-            ANIMAL MEDICAL RECORDS
-          </p>
-          <p
-            className="reveal"
-            style={{
-              fontSize: "clamp(15px, 1.4vw, 17px)",
-              lineHeight: 1.75,
-              color: colors.textOnDarkMuted,
-              maxWidth: 520,
-              margin: "0 auto 48px",
-            }}
-          >
-            One record enables one longer, healthier life. Gathered at scale,
-            they reveal patterns no single clinic ever could. That knowledge
-            extends every life that follows.
-          </p>
-          <div className="goal-stats reveal">
-            {[
-              {
-                n: "40+",
-                label: "Species covered",
-                sub: "Dogs and horses — and bees, eagles, axolotls",
-              },
-              {
-                n: "195",
-                label: "Countries to reach",
-                sub: "Every vet. Every clinic. Everywhere.",
-              },
-              {
-                n: "∞",
-                label: "Knowledge shared",
-                sub: "Every case teaches every vet that follows",
-              },
-            ].map((stat) => (
+        <div
+          className="goal-stats reveal"
+          style={{ maxWidth: 960, margin: "0 auto" }}
+        >
+          {[
+            {
+              n: "40+",
+              label: "Species covered",
+              sub: "Dogs and horses — and bees, eagles, axolotls",
+            },
+            {
+              n: "195",
+              label: "Countries to reach",
+              sub: "Every vet. Every clinic. Everywhere.",
+            },
+            {
+              n: "∞",
+              label: "Knowledge shared",
+              sub: "Every case teaches every vet that follows",
+            },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              style={{
+                borderTop: "2px solid rgba(247,243,236,0.25)",
+                paddingTop: 20,
+              }}
+            >
               <div
-                key={stat.label}
                 style={{
-                  borderTop: "2px solid rgba(247,243,236,0.25)",
-                  paddingTop: 20,
+                  fontSize: "clamp(32px, 4vw, 48px)",
+                  fontWeight: 900,
+                  color: colors.textOnDark,
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1,
                 }}
               >
-                <div
-                  style={{
-                    fontSize: "clamp(32px, 4vw, 48px)",
-                    fontWeight: 900,
-                    color: colors.textOnDark,
-                    letterSpacing: "-0.02em",
-                    lineHeight: 1,
-                  }}
-                >
-                  {stat.n}
-                </div>
-                <p
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 900,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    color: colors.textOnDarkSoft,
-                    marginTop: 8,
-                  }}
-                >
-                  {stat.label}
-                </p>
-                <p
-                  style={{
-                    fontSize: 13,
-                    color: colors.textOnDarkMuted,
-                    marginTop: 4,
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {stat.sub}
-                </p>
+                {stat.n}
               </div>
-            ))}
-          </div>
+              <p
+                style={{
+                  fontSize: 13,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  color: colors.textOnDarkSoft,
+                  marginTop: 8,
+                }}
+              >
+                {stat.label}
+              </p>
+              <p
+                style={{
+                  fontSize: 13,
+                  color: colors.textOnDarkMuted,
+                  marginTop: 4,
+                  lineHeight: 1.5,
+                }}
+              >
+                {stat.sub}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 

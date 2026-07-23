@@ -49,7 +49,7 @@ export function SpeciesSection() {
             EVERY SPECIES.
             <br />
             <span style={{ color: colors.inkMuted, fontWeight: 700 }}>
-              ONE OBLIGATION.
+              WHO YOU CARE FOR.
             </span>
           </h2>
           <p
@@ -73,8 +73,8 @@ export function SpeciesSection() {
               maxWidth: 640,
             }}
           >
-            Tap the animals you care for. Build your obligation. Not just dogs —
-            every creature that depends on someone.
+            Tap the animals you care for. Not just dogs — every creature that
+            depends on someone.
           </p>
         </div>
 
@@ -120,8 +120,8 @@ export function SpeciesSection() {
                 }}
               >
                 {selected.includes(focus.latin)
-                  ? "IN YOUR OBLIGATION"
-                  : "ENTRUSTED TO"}
+                  ? "IN YOUR CARE"
+                  : "CARED FOR BY"}
               </p>
               <h3
                 style={{
@@ -242,7 +242,7 @@ export function SpeciesSection() {
                   marginBottom: 4,
                 }}
               >
-                Your obligation
+                In your care
               </p>
               <p
                 style={{
