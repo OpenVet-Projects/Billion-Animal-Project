@@ -1,28 +1,38 @@
-# The Billion Animal Project
+# The Billion Animal Study
 
-**Gather the medical records of one billion animals — so one billion animals can live longer.**
+**Gather the medical records of one billion animals — so animals live longer, healthier lives.**
 
-This repository is the public home for the project's open work.
+Site for [billionanimals.org](https://www.billionanimals.org).
 
-## Status
+## Develop
 
-🚧 **More is coming soon.**
+```bash
+npm install
+npm run dev
+```
 
-We're preparing open source tools, data standards, and contribution guides for clinics, vets, researchers, and caretakers who want to help.
+## Waitlist (Supabase) — what you do
 
-## Links
+No webhook. Emails go into the **dev** Supabase project:
 
-- Website: [billionanimals.org](https://billionanimals.org)
-- Contact: hello@billionanimals.org
+`https://zgrktbhvjgzeidvtvbxz.supabase.co`
 
-## What will live here
+1. In Supabase → **SQL** → run `supabase/waitlist.sql` (once)
+2. Add **only this** env var on Vercel (Production + Preview) and local `.env`:
 
-- Contribution guidelines
-- Open tooling and standards as they are ready
-- Public documentation for the mission
+```bash
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+```
 
-Until then: join the mission at [billionanimals.org](https://billionanimals.org/#join).
+Get it from Supabase → Project Settings → API → `service_role` (secret).  
+Never put it in the browser.
 
----
+3. Redeploy. Submit the form once. Check table `public.study_waitlist`.
 
-© The Billion Animal Project
+## Stack
+
+React Router 8 · Vite · TypeScript · Supabase waitlist
+
+## Contact
+
+hello@billionanimals.org
