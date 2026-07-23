@@ -11,7 +11,8 @@
 }
 
 html {
-  overflow-x: clip;
+  /* Do NOT set overflow-x on html/body — it breaks position:sticky
+     for the billion→one scroll story. Contain overflow per-section. */
   scroll-behavior: smooth;
   background: var(--color-cream);
 }
@@ -20,7 +21,6 @@ body {
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  overflow-x: clip;
   margin: 0;
   background: var(--color-cream);
   color: var(--color-navy);
@@ -505,7 +505,23 @@ body {
   position: sticky;
   top: 0;
   height: 100svh;
+  width: 100%;
   overflow: hidden;
+}
+
+/* JS fallback when sticky is defeated by ancestor overflow */
+.billion-sticky.is-pinned {
+  position: fixed;
+  inset: 0 auto auto 0;
+  z-index: 20;
+}
+
+.billion-sticky.is-after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: auto;
 }
 
 .billion-stage {

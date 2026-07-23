@@ -133,13 +133,17 @@ function sampleStage(progress: number) {
   const t = scaled - i;
   const current = STAGES[i];
   const next = STAGES[Math.min(max, i + 1)];
-  const count = lerp(current.count, next.count, t);
-  return { index: i, t, current, next, count };
+  return {
+    index: i,
+    current,
+    count: lerp(current.count, next.count, t),
+  };
 }
 
 export function BillionToOneSection() {
   const trackRef = useRef<HTMLElement>(null);
   const [progress, setProgress] = useState(0);
+  const [pinMode, setPinMode] = useState<"before" | "pin" | "after">("before");
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
@@ -158,8 +162,15 @@ export function BillionToOneSection() {
     function update() {
       if (!track) return;
       const rect = track.getBoundingClientRect();
-      const total = Math.max(1, rect.height - window.innerHeight);
-      setProgress(clamp(-rect.top / total));
+      const viewH = window.innerHeight;
+      const total = Math.max(1, rect.height - viewH);
+      const p = clamp(-rect.top / total);
+      setProgress(p);
+      // Pin the story viewport for the whole tall track (sticky can fail
+      // if any ancestor sets overflow-x; fixed is the reliable fallback).
+      if (rect.top > 0) setPinMode("before");
+      else if (rect.bottom >= viewH) setPinMode("pin");
+      else setPinMode("after");
     }
 
     function onScroll() {
@@ -185,7 +196,7 @@ export function BillionToOneSection() {
       }
     : sampleStage(progress);
 
-  const showRecord = current.id === "record" || (reduceMotion && true);
+  const showRecord = current.id === "record" || reduceMotion;
   const showOne = current.id === "one" || showRecord || count <= 1.5;
   const images = current.images;
 
@@ -196,7 +207,17 @@ export function BillionToOneSection() {
       className="billion-track"
       aria-label="From one billion animals to one medical record"
     >
-      <div className="billion-sticky">
+      <div
+        className={`billion-sticky${
+          reduceMotion
+            ? ""
+            : pinMode === "pin"
+              ? " is-pinned"
+              : pinMode === "after"
+                ? " is-after"
+                : ""
+        }`}
+      >
         <div className="billion-stage">
           <div className="billion-swarm" aria-hidden="true">
             {images.map((img, i) => {
@@ -213,7 +234,7 @@ export function BillionToOneSection() {
                   : 0.52 + (i % 4) * 0.09;
               return (
                 <img
-                  key={`${current.id}-${img.src}-${i}`}
+                  key={`${img.src}-${i}`}
                   src={img.src}
                   alt=""
                   className="billion-swarm-img"
@@ -227,9 +248,7 @@ export function BillionToOneSection() {
             })}
           </div>
 
-          <div
-            className={`billion-copy${showRecord ? " is-hidden" : ""}`}
-          >
+          <div className={`billion-copy${showRecord ? " is-hidden" : ""}`}>
             <p
               style={{
                 fontSize: 12,
@@ -314,7 +333,7 @@ export function BillionToOneSection() {
             ))}
           </div>
 
-          {!reduceMotion && progress < 0.95 && !showRecord ? (
+          {!reduceMotion && progress < 0.92 && !showRecord ? (
             <p className="billion-hint">Keep scrolling — still in this story</p>
           ) : null}
         </div>
