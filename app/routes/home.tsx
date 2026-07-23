@@ -1,12 +1,10 @@
-import { useRef } from "react";
 import { useFetcher, useNavigation } from "react-router";
 import { BillionToOneSection } from "~/components/BillionToOneSection";
+import { HeroField } from "~/components/HeroField";
 import { LifespanSection } from "~/components/LifespanSection";
 import { SpeciesSection } from "~/components/SpeciesSection";
 import { ZoonoticSection } from "~/components/ZoonoticSection";
-import { useTrailImages } from "~/hooks/useTrailImages";
 import { OWE_ITEMS } from "~/lib/owe";
-import { SPECIES } from "~/lib/species";
 import { colors } from "~/lib/theme";
 import type { WaitlistResult } from "~/routes/waitlist";
 import type { Route } from "./+types/home";
@@ -30,13 +28,6 @@ const PILLARS = [
   },
 ] as const;
 
-const TRAIL_IMAGES = [
-  ...SPECIES.map((s) => ({ src: s.img, alt: s.common })),
-  { src: "/images/billion/wolf-hero.png", alt: "Wolf" },
-  { src: "/images/billion/horses-migration.png", alt: "Horses" },
-  { src: "/images/billion/jaguar-thriving.png", alt: "Jaguar" },
-];
-
 const ROLES = [
   ["CLINIC", "clinic"],
   ["VET", "vet"],
@@ -45,8 +36,6 @@ const ROLES = [
 ] as const;
 
 export default function Home(_props: Route.ComponentProps) {
-  const heroRef = useRef<HTMLElement>(null);
-  const trailRefs = useTrailImages(heroRef, TRAIL_IMAGES);
   const fetcher = useFetcher<WaitlistResult>();
   const navigation = useNavigation();
   const submitting =
@@ -86,7 +75,6 @@ export default function Home(_props: Route.ComponentProps) {
       </nav>
 
       <section
-        ref={heroRef}
         className="ba-hero"
         style={{
           background:
@@ -94,22 +82,7 @@ export default function Home(_props: Route.ComponentProps) {
         }}
         aria-label="Hero"
       >
-        {Array.from({ length: 14 }, (_, i) => {
-          const asset = TRAIL_IMAGES[i % TRAIL_IMAGES.length];
-          return (
-            <img
-              key={i}
-              ref={(el) => {
-                trailRefs.current[i] = el;
-              }}
-              src={asset.src}
-              alt=""
-              data-src={asset.src}
-              className="trail-img"
-              aria-hidden="true"
-            />
-          );
-        })}
+        <HeroField />
         <div
           style={{
             position: "relative",
@@ -117,6 +90,7 @@ export default function Home(_props: Route.ComponentProps) {
             textAlign: "center",
             padding: "0 20px",
             width: "100%",
+            pointerEvents: "none",
           }}
         >
           <p
@@ -129,7 +103,7 @@ export default function Home(_props: Route.ComponentProps) {
               marginBottom: 20,
             }}
           >
-            The Billion Animal Study
+            The Billion Animal Project
           </p>
           <h1
             style={{
