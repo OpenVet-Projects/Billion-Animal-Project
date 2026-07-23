@@ -497,7 +497,7 @@ body {
 /* Billion → One scroll story */
 .billion-track {
   position: relative;
-  height: 320vh;
+  height: 380vh;
   background: #011510;
 }
 
@@ -515,6 +515,13 @@ body {
   display: grid;
   place-items: center;
   overflow: hidden;
+  background: linear-gradient(
+    155deg,
+    #011510 0%,
+    #0b1f3a 42%,
+    #063d32 72%,
+    #0057ff 130%
+  );
 }
 
 .billion-swarm {
@@ -547,7 +554,15 @@ body {
   text-align: center;
   padding: 0 24px;
   max-width: 720px;
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.billion-copy.is-hidden {
+  opacity: 0;
+  transform: translateY(-14px);
+  pointer-events: none;
 }
 
 .billion-count {
@@ -577,13 +592,6 @@ body {
   opacity: 1;
   pointer-events: auto;
   transform: none;
-}
-
-.billion-record.is-visible ~ .billion-copy,
-.billion-stage:has(.billion-record.is-visible) .billion-copy {
-  opacity: 0;
-  transform: translateY(-12px);
-  pointer-events: none;
 }
 
 .billion-record-card {
@@ -709,7 +717,7 @@ body {
 
 @media (max-width: 768px) {
   .billion-track {
-    height: 280vh;
+    height: 340vh;
   }
   .billion-swarm-img {
     width: clamp(72px, 22vw, 110px);

@@ -6,7 +6,7 @@ type Stage = {
   label: string;
   title: string;
   body: string;
-  count: string;
+  count: number;
   images: { src: string; alt: string }[];
 };
 
@@ -16,7 +16,7 @@ const STAGES: Stage[] = [
     label: "THE SCALE",
     title: "ONE BILLION LIVES",
     body: "Herds. Flocks. Colonies. Companions. A number so large it stops feeling like anyone.",
-    count: "1,000,000,000",
+    count: 1_000_000_000,
     images: [
       { src: "/images/animals/cattle.png", alt: "Cattle" },
       { src: "/images/animals/sheep.png", alt: "Sheep" },
@@ -37,7 +37,7 @@ const STAGES: Stage[] = [
     label: "THE HERDS",
     title: "LIVESTOCK AT SCALE",
     body: "Cattle on the range. Sheep on the hillside. Horses in the dust. Millions of lives carried by a few pairs of human hands.",
-    count: "412,000,000",
+    count: 412_000_000,
     images: [
       { src: "/images/animals/cattle.png", alt: "Cattle" },
       { src: "/images/animals/sheep.png", alt: "Sheep" },
@@ -54,7 +54,7 @@ const STAGES: Stage[] = [
     label: "THE FLOCKS",
     title: "BIRDS IN MOTION",
     body: "Chickens, ducks, geese, raptors — flocks that feed cities and birds that still need a chart when something goes wrong.",
-    count: "88,000,000",
+    count: 88_000_000,
     images: [
       { src: "/images/animals/chicken.png", alt: "Chicken" },
       { src: "/images/animals/duck.png", alt: "Duck" },
@@ -71,7 +71,7 @@ const STAGES: Stage[] = [
     label: "THE COMPANIONS",
     title: "THE ONES AT HOME",
     body: "Dogs. Cats. Rabbits. The animals whose names we know — and whose history still gets lost between clinics.",
-    count: "1,240",
+    count: 1_240,
     images: [
       { src: "/images/animals/dog.png", alt: "Dog" },
       { src: "/images/animals/cat.png", alt: "Cat" },
@@ -86,7 +86,7 @@ const STAGES: Stage[] = [
     label: "ONE LIFE",
     title: "THEN JUST ONE",
     body: "A single animal. A single caretaker. A history that should never reset at the clinic door.",
-    count: "1",
+    count: 1,
     images: [{ src: "/images/animals/dog.png", alt: "Dog" }],
   },
   {
@@ -94,7 +94,7 @@ const STAGES: Stage[] = [
     label: "THE RECORD",
     title: "HER MEMORY, MADE VISIBLE",
     body: "This is what one billion becomes for: a medical record that travels with the animal — so the next vet already knows.",
-    count: "1",
+    count: 1,
     images: [{ src: "/images/animals/dog.png", alt: "Dog" }],
   },
 ];
@@ -112,9 +112,29 @@ const RECORD = {
   ],
 };
 
-function stageIndex(progress: number) {
-  const n = STAGES.length;
-  return Math.min(n - 1, Math.max(0, Math.floor(progress * n)));
+function clamp(n: number, min = 0, max = 1) {
+  return Math.min(max, Math.max(min, n));
+}
+
+function lerp(a: number, b: number, t: number) {
+  return a + (b - a) * t;
+}
+
+function formatCount(n: number) {
+  if (n >= 1_000_000) return Math.round(n).toLocaleString("en-US");
+  if (n >= 100) return Math.round(n).toLocaleString("en-US");
+  return String(Math.max(1, Math.round(n)));
+}
+
+function sampleStage(progress: number) {
+  const max = STAGES.length - 1;
+  const scaled = progress * max;
+  const i = Math.min(max, Math.floor(scaled));
+  const t = scaled - i;
+  const current = STAGES[i];
+  const next = STAGES[Math.min(max, i + 1)];
+  const count = lerp(current.count, next.count, t);
+  return { index: i, t, current, next, count };
 }
 
 export function BillionToOneSection() {
@@ -138,9 +158,8 @@ export function BillionToOneSection() {
     function update() {
       if (!track) return;
       const rect = track.getBoundingClientRect();
-      const total = rect.height - window.innerHeight;
-      const raw = total <= 0 ? 0 : -rect.top / total;
-      setProgress(Math.min(1, Math.max(0, raw)));
+      const total = Math.max(1, rect.height - window.innerHeight);
+      setProgress(clamp(-rect.top / total));
     }
 
     function onScroll() {
@@ -158,47 +177,49 @@ export function BillionToOneSection() {
     };
   }, []);
 
-  const active = reduceMotion ? STAGES.length - 1 : stageIndex(progress);
-  const stage = STAGES[active];
-  const showRecord = stage.id === "record" || reduceMotion;
-  const showOne = stage.id === "one" || showRecord;
+  const { index, current, count } = reduceMotion
+    ? {
+        index: STAGES.length - 1,
+        current: STAGES[STAGES.length - 1],
+        count: 1,
+      }
+    : sampleStage(progress);
+
+  const showRecord = current.id === "record" || (reduceMotion && true);
+  const showOne = current.id === "one" || showRecord || count <= 1.5;
+  const images = current.images;
 
   return (
     <section
       ref={trackRef}
+      id="billion-to-one"
       className="billion-track"
       aria-label="From one billion animals to one medical record"
     >
       <div className="billion-sticky">
-        <div
-          className="billion-stage"
-          style={{
-            background:
-              "linear-gradient(155deg, #011510 0%, #0b1f3a 42%, #063d32 72%, #0057ff 120%)",
-          }}
-        >
+        <div className="billion-stage">
           <div className="billion-swarm" aria-hidden="true">
-            {stage.images.map((img, i) => {
-              const angle = (i / Math.max(stage.images.length, 1)) * Math.PI * 2;
+            {images.map((img, i) => {
+              const angle = (i / Math.max(images.length, 1)) * Math.PI * 2;
               const radius =
-                showOne && stage.images.length === 1
+                showOne && images.length === 1
                   ? 0
-                  : 110 + (i % 3) * 36 + (1 - progress) * 40;
-              const x = Math.cos(angle + progress * 2) * radius;
-              const y = Math.sin(angle + progress * 1.4) * radius * 0.72;
+                  : 100 + (i % 3) * 34 + (1 - progress) * 50;
+              const x = Math.cos(angle + progress * 2.2) * radius;
+              const y = Math.sin(angle + progress * 1.6) * radius * 0.7;
               const scale =
-                showOne && stage.images.length === 1
-                  ? 1.35
-                  : 0.55 + (i % 4) * 0.08;
+                showOne && images.length === 1
+                  ? 1.4
+                  : 0.52 + (i % 4) * 0.09;
               return (
                 <img
-                  key={`${stage.id}-${img.src}-${i}`}
+                  key={`${current.id}-${img.src}-${i}`}
                   src={img.src}
                   alt=""
                   className="billion-swarm-img"
                   style={{
                     transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${scale})`,
-                    opacity: showRecord ? 0.18 : showOne ? 1 : 0.88,
+                    opacity: showRecord ? 0.16 : 0.9,
                     zIndex: showOne ? 3 : 1,
                   }}
                 />
@@ -206,7 +227,9 @@ export function BillionToOneSection() {
             })}
           </div>
 
-          <div className="billion-copy">
+          <div
+            className={`billion-copy${showRecord ? " is-hidden" : ""}`}
+          >
             <p
               style={{
                 fontSize: 12,
@@ -217,15 +240,13 @@ export function BillionToOneSection() {
                 marginBottom: 14,
               }}
             >
-              {stage.label}
+              {current.label}
             </p>
             <div
               className="billion-count"
-              style={{
-                color: showOne ? "#5ee0d0" : colors.textOnDark,
-              }}
+              style={{ color: showOne ? "#5ee0d0" : colors.textOnDark }}
             >
-              {stage.count}
+              {formatCount(count)}
             </div>
             <h2
               style={{
@@ -239,7 +260,7 @@ export function BillionToOneSection() {
                 marginBottom: 14,
               }}
             >
-              {stage.title}
+              {current.title}
             </h2>
             <p
               style={{
@@ -250,7 +271,7 @@ export function BillionToOneSection() {
                 margin: "0 auto",
               }}
             >
-              {stage.body}
+              {current.body}
             </p>
           </div>
 
@@ -288,13 +309,13 @@ export function BillionToOneSection() {
             {STAGES.map((s, i) => (
               <span
                 key={s.id}
-                className={i === active ? "is-active" : undefined}
+                className={i === index ? "is-active" : undefined}
               />
             ))}
           </div>
 
-          {!reduceMotion && progress < 0.96 ? (
-            <p className="billion-hint">Scroll to zoom from a billion to one</p>
+          {!reduceMotion && progress < 0.95 && !showRecord ? (
+            <p className="billion-hint">Keep scrolling — still in this story</p>
           ) : null}
         </div>
       </div>

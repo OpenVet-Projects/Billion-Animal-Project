@@ -194,9 +194,11 @@ export default function Home(_props: Route.ComponentProps) {
             color: colors.textOnDarkSoft,
           }}
         >
-          ↓ SCROLL
+          ↓ SCROLL INTO THE STORY
         </div>
       </section>
+
+      <BillionToOneSection />
 
       <section
         className="sec-pad"
@@ -316,8 +318,6 @@ export default function Home(_props: Route.ComponentProps) {
           ))}
         </div>
       </section>
-
-      <BillionToOneSection />
 
       <section
         className="sec-pad-sm"
