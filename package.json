@@ -1,5 +1,5 @@
 {
-  "name": "billion-animal-study",
+  "name": "billion-animal-project",
   "private": true,
   "type": "module",
   "scripts": {
@@ -27,7 +27,7 @@
     "typescript": "^5.9.3",
     "vite": "^8.0.3"
   },
-  "description": "The Billion Animal Study — gather animal medical records so animals live longer, healthier lives.",
+  "description": "The Billion Animal Project gathers animal medical records so animals live longer, healthier lives.",
   "engines": {
     "node": ">=22.22.0"
   }

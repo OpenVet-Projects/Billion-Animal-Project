@@ -8,10 +8,6 @@ import {
   type SpeciesCategoryId,
 } from "~/lib/species";
 
-function markFor(species: Species) {
-  return species.common.slice(0, 1).toUpperCase();
-}
-
 export function SpeciesSection() {
   const [filter, setFilter] = useState<SpeciesCategoryId>("all");
   const [selected, setSelected] = useState<string[]>([]);
@@ -77,8 +73,8 @@ export function SpeciesSection() {
               maxWidth: 640,
             }}
           >
-            Tap the animals you care for. Build your field — not a gallery of
-            stock photos.
+            Tap the animals you care for. Not just dogs, but every creature that
+            depends on someone.
           </p>
         </div>
 
@@ -111,13 +107,7 @@ export function SpeciesSection() {
 
         {focus ? (
           <div className="species-focus reveal" aria-live="polite">
-            <div
-              className="species-focus-mark"
-              style={{ backgroundColor: SPECIES_CARD_COLORS[focus.col] }}
-              aria-hidden="true"
-            >
-              <span>{markFor(focus)}</span>
-            </div>
+            <img src={focus.img} alt={focus.common} />
             <div>
               <p
                 style={{
@@ -186,9 +176,21 @@ export function SpeciesSection() {
                   borderColor: isSelected ? colors.blue : colors.navy,
                 }}
               >
-                <span className="sp-mark" aria-hidden="true">
-                  {markFor(species)}
-                </span>
+                <img
+                  src={species.img}
+                  alt=""
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center top",
+                  }}
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
                 {isSelected ? (
                   <span className="sp-check" aria-hidden="true">
                     ✓

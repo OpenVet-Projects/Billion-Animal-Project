@@ -1,6 +1,6 @@
-# The Billion Animal Study
+# The Billion Animal Project
 
-**Gather the medical records of one billion animals — so animals live longer, healthier lives.**
+**Gather the medical records of one billion animals so animals live longer, healthier lives.**
 
 Site for [billionanimals.org](https://www.billionanimals.org).
 
@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-## Waitlist (Supabase) — what you do
+## Waitlist (Supabase): what you do
 
 No webhook. Emails go into the **dev** Supabase project:
 

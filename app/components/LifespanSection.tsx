@@ -1,14 +1,10 @@
 import { useState } from "react";
-import { LifeField } from "~/components/LifeField";
 import { colors } from "~/lib/theme";
 import { LIFESPAN_TABS } from "~/lib/lifespan";
-
-const MODES = ["disease", "cross", "zoonotic", "geo", "early"] as const;
 
 export function LifespanSection() {
   const [active, setActive] = useState(0);
   const tab = LIFESPAN_TABS[active];
-  const mode = MODES[active] ?? "disease";
 
   return (
     <section
@@ -57,7 +53,7 @@ export function LifespanSection() {
               maxWidth: 640,
             }}
           >
-            Longer, healthier lives — not more years of suffering. Tap a path to
+            Longer, healthier lives, not more years of suffering. Tap a path to
             see how records make that possible.
           </p>
         </div>
@@ -106,8 +102,8 @@ export function LifespanSection() {
         </div>
 
         <div className="life-panel reveal" key={tab.n}>
-          <div className="life-panel-visual">
-            <LifeField accent={tab.accent} mode={mode} />
+          <div className="life-panel-img">
+            <img src={tab.img} alt={tab.imgAlt} />
             <div
               className="life-panel-badge"
               style={{ backgroundColor: tab.accent }}
