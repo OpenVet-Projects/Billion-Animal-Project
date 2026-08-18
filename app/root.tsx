@@ -44,7 +44,7 @@ export const meta: Route.MetaFunction = () => [
   {
     name: "keywords",
     content:
-      "Billion Animal Study, animal medical records, veterinary medicine, One Health, zoonotic disease, OpenAnimal, OpenVet, animal health data",
+      "Billion Animal Project, animal medical records, veterinary medicine, One Health, zoonotic disease, OpenAnimal, OpenVet, animal health data",
   },
   { property: "og:type", content: "website" },
   { property: "og:site_name", content: SITE_NAME },
@@ -55,7 +55,7 @@ export const meta: Route.MetaFunction = () => [
   { property: "og:image", content: OG_IMAGE },
   { property: "og:image:width", content: "1200" },
   { property: "og:image:height", content: "630" },
-  { property: "og:image:alt", content: "The Billion Animal Study" },
+  { property: "og:image:alt", content: "The Billion Animal Project" },
   { name: "twitter:card", content: "summary_large_image" },
   { name: "twitter:title", content: DEFAULT_TITLE },
   { name: "twitter:description", content: DEFAULT_DESCRIPTION },
@@ -101,7 +101,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     message = error.status === 404 ? "Page not found" : `Error ${error.status}`;
     details =
       error.status === 404
-        ? "That page does not exist on the Billion Animal Study site."
+        ? "That page does not exist on the Billion Animal Project site."
         : error.statusText || details;
   } else if (import.meta.env.DEV && error instanceof Error) {
     details = error.message;
@@ -131,7 +131,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
             marginBottom: 16,
           }}
         >
-          Billion Animal Study
+          Billion Animal Project
         </p>
         <h1
           style={{

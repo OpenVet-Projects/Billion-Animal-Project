@@ -1,4 +1,4 @@
-/** Brand + WCAG AA contrast-safe color tokens for the Billion Animal Study site. */
+/** Brand and WCAG AA contrast-safe color tokens for the Billion Animal Project site. */
 export const colors = {
   // Brand
   cream: "#f7f3ec",
@@ -7,10 +7,10 @@ export const colors = {
   teal: "#00a896",
   paleBlue: "#e8f2ff",
 
-  /** Decorative brand slate — not for body copy on cream. */
+  /** Decorative brand slate. Do not use for body copy on cream. */
   slate: "#6b8fae",
 
-  /** Body secondary on cream — >=4.5:1 vs #f7f3ec. */
+  /** Body secondary on cream. Contrast is >=4.5:1 vs #f7f3ec. */
   inkMuted: "#3f5d78",
 
   /** Primary readable text on dark / navy gradients. */
@@ -19,7 +19,7 @@ export const colors = {
   textOnDarkMuted: "#d5dce6",
   /** Eyebrows / labels on dark. */
   textOnDarkSoft: "#b8c4d4",
-  /** Sources / meta on dark — still >=4.5:1 vs #090f1a. */
+  /** Sources and meta on dark. Contrast remains >=4.5:1 vs #090f1a. */
   textOnDarkMeta: "#9aabbd",
 
   /** Zoonotic diagram background. */

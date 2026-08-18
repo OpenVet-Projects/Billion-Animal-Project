@@ -148,7 +148,7 @@ export const zoonoticPalette = {
   zoonoticHi: "#4d8fff",
   lineBase: "rgba(107,143,174,0.22)",
   text: colors.textOnDark,
-  /** Was rgba(247,243,236,0.3) — now AA-safe muted text on dark. */
+  /** Was rgba(247,243,236,0.3); now AA-safe muted text on dark. */
   dim: colors.textOnDarkMuted,
   soft: colors.textOnDarkSoft,
   meta: colors.textOnDarkMeta,

@@ -1,10 +1,12 @@
+import { useRef } from "react";
 import { useFetcher, useNavigation } from "react-router";
 import { BillionToOneSection } from "~/components/BillionToOneSection";
-import { HeroField } from "~/components/HeroField";
 import { LifespanSection } from "~/components/LifespanSection";
 import { SpeciesSection } from "~/components/SpeciesSection";
 import { ZoonoticSection } from "~/components/ZoonoticSection";
+import { useTrailImages } from "~/hooks/useTrailImages";
 import { OWE_ITEMS } from "~/lib/owe";
+import { SPECIES } from "~/lib/species";
 import { colors } from "~/lib/theme";
 import type { WaitlistResult } from "~/routes/waitlist";
 import type { Route } from "./+types/home";
@@ -12,7 +14,7 @@ import type { Route } from "./+types/home";
 const PILLARS = [
   {
     title: "THE RECORD",
-    body: "The animal's record is not a product feature; it is a right of care. Every diagnosis, treatment, and outcome — saved, searchable, shared across every vet who touches that animal.",
+    body: "The animal's record is not a product feature; it is a right of care. Every diagnosis, treatment, and outcome is saved, searchable, and shared across every vet who touches that animal.",
   },
   {
     title: "THE REACH",
@@ -24,9 +26,16 @@ const PILLARS = [
   },
   {
     title: "THE VOW",
-    body: "One billion records. Longer, healthier lives. Concrete, measurable, public. We will be held to it — and we intend to meet it.",
+    body: "One billion records. Longer, healthier lives. Concrete, measurable, public. We will be held to it, and we intend to meet it.",
   },
 ] as const;
+
+const TRAIL_IMAGES = [
+  ...SPECIES.map((s) => ({ src: s.img, alt: s.common })),
+  { src: "/images/billion/wolf-hero.png", alt: "Wolf" },
+  { src: "/images/billion/horses-migration.png", alt: "Horses" },
+  { src: "/images/billion/jaguar-thriving.png", alt: "Jaguar" },
+];
 
 const ROLES = [
   ["CLINIC", "clinic"],
@@ -36,6 +45,8 @@ const ROLES = [
 ] as const;
 
 export default function Home(_props: Route.ComponentProps) {
+  const heroRef = useRef<HTMLElement>(null);
+  const trailRefs = useTrailImages(heroRef, TRAIL_IMAGES);
   const fetcher = useFetcher<WaitlistResult>();
   const navigation = useNavigation();
   const submitting =
@@ -75,6 +86,7 @@ export default function Home(_props: Route.ComponentProps) {
       </nav>
 
       <section
+        ref={heroRef}
         className="ba-hero"
         style={{
           background:
@@ -82,7 +94,22 @@ export default function Home(_props: Route.ComponentProps) {
         }}
         aria-label="Hero"
       >
-        <HeroField />
+        {Array.from({ length: 14 }, (_, i) => {
+          const asset = TRAIL_IMAGES[i % TRAIL_IMAGES.length];
+          return (
+            <img
+              key={i}
+              ref={(el) => {
+                trailRefs.current[i] = el;
+              }}
+              src={asset.src}
+              alt=""
+              data-src={asset.src}
+              className="trail-img"
+              aria-hidden="true"
+            />
+          );
+        })}
         <div
           style={{
             position: "relative",
@@ -90,7 +117,6 @@ export default function Home(_props: Route.ComponentProps) {
             textAlign: "center",
             padding: "0 20px",
             width: "100%",
-            pointerEvents: "none",
           }}
         >
           <p
@@ -307,7 +333,7 @@ export default function Home(_props: Route.ComponentProps) {
             {
               n: "40+",
               label: "Species covered",
-              sub: "Dogs and horses — and bees, eagles, axolotls",
+              sub: "Dogs and horses, plus bees, eagles, and axolotls",
             },
             {
               n: "195",
@@ -507,7 +533,7 @@ export default function Home(_props: Route.ComponentProps) {
               marginRight: "auto",
             }}
           >
-            Join the waitlist for the Billion Animal Study.
+            Join the waitlist for the Billion Animal Project.
           </p>
           <p
             className="reveal"
@@ -523,7 +549,7 @@ export default function Home(_props: Route.ComponentProps) {
               marginRight: "auto",
             }}
           >
-            OpenVet and OpenAnimal are tools in service of the vow — not the
+            OpenVet and OpenAnimal are tools in service of the vow, not the
             other way around. Leave your email. We&apos;ll invite you when
             enrollment opens.
           </p>
@@ -723,8 +749,8 @@ export default function Home(_props: Route.ComponentProps) {
                 maxWidth: 420,
               }}
             >
-              Independence is the point. The platforms serve the study — the
-              study does not serve the platforms.
+              Independence is the point. The platforms serve the project; the
+              project does not serve the platforms.
             </p>
           </div>
           <div>
@@ -749,12 +775,12 @@ export default function Home(_props: Route.ComponentProps) {
                 textDecoration: "none",
               }}
             >
-              GitHub / Billion Animal Study
+              GitHub / Billion Animal Project
             </a>
           </div>
         </div>
         <div style={{ overflow: "hidden" }} aria-hidden="true">
-          <p className="footer-mega">BILLION ANIMAL STUDY</p>
+          <p className="footer-mega">BILLION ANIMAL PROJECT</p>
         </div>
         <div
           style={{
@@ -769,7 +795,7 @@ export default function Home(_props: Route.ComponentProps) {
             color: colors.inkMuted,
           }}
         >
-          <span>©{new Date().getFullYear()} THE BILLION ANIMAL STUDY</span>
+          <span>©{new Date().getFullYear()} THE BILLION ANIMAL PROJECT</span>
         </div>
       </footer>
     </div>

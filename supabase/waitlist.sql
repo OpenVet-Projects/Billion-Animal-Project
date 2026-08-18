@@ -16,4 +16,4 @@ alter table public.study_waitlist enable row level security;
 -- The site inserts with SUPABASE_SERVICE_ROLE_KEY on the server only.
 
 comment on table public.study_waitlist is
-  'Billion Animal Study enrollment waitlist from billionanimals.org';
+  'Billion Animal Project enrollment waitlist from billionanimals.org';

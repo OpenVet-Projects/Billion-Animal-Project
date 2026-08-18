@@ -702,7 +702,7 @@ export function ZoonoticSection() {
             color: m.meta,
           }}
         >
-          Sources: CDC One Health · WHO · NIH Cancer Institute · AVMA — Tap or
+          Sources: CDC One Health · WHO · NIH Cancer Institute · AVMA. Tap or
           hover any species or disease
         </p>
         {isActive ? (

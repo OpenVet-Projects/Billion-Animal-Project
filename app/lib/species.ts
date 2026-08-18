@@ -374,7 +374,7 @@ export const SPECIES: Species[] = [
     col: 2,
     img: "/images/animals/pigeon.png",
     category: "birds",
-    entrusted: "A loft keeper for birds that fly home — and get hurt.",
+    entrusted: "A loft keeper for birds that fly home and get hurt.",
   },
   {
     latin: "Coturnix",
@@ -430,7 +430,7 @@ export const SPECIES: Species[] = [
     col: 4,
     img: "/images/animals/eagle.png",
     category: "birds",
-    entrusted: "A raptor rehabber restoring flight — and dignity.",
+    entrusted: "A raptor rehabber restoring flight and dignity.",
   },
 ];
 

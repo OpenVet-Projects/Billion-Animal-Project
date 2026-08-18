@@ -11,7 +11,7 @@
 }
 
 html {
-  /* Do NOT set overflow-x on html/body — it breaks position:sticky
+  /* Do NOT set overflow-x on html/body; it breaks position:sticky
      for the billion→one scroll story. Contain overflow per-section. */
   scroll-behavior: smooth;
   background: var(--color-cream);
@@ -34,13 +34,17 @@ body {
   color: #fff;
 }
 
-.hero-field {
+.trail-img {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  display: block;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 
 @keyframes ba-fadeUp {
@@ -207,21 +211,16 @@ body {
   background: #e8f2ff;
 }
 
-.species-focus-mark {
+.species-focus img {
   width: 120px;
   height: 160px;
+  object-fit: cover;
+  object-position: center top;
   border: 2px solid #0b1f3a;
-  display: grid;
-  place-items: center;
-  color: #f7f3ec;
-  font-size: 56px;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
 }
 
 .sp-card-btn {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 2 / 3;
   border: 2px solid #0b1f3a;
   border-radius: 4px;
   overflow: hidden;
@@ -236,19 +235,6 @@ body {
 .sp-card-btn.is-selected {
   box-shadow: 0 0 0 3px #0057ff;
   transform: translateY(-4px) scale(1.02);
-}
-
-.sp-mark {
-  position: absolute;
-  inset: 0 0 42px;
-  display: grid;
-  place-items: center;
-  font-size: clamp(28px, 5vw, 40px);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  color: rgba(247, 243, 236, 0.92);
-  text-transform: uppercase;
-  pointer-events: none;
 }
 
 .sp-check {
@@ -330,19 +316,17 @@ body {
   overflow: hidden;
 }
 
-.life-panel-visual {
+.life-panel-img {
   position: relative;
   min-height: 280px;
   background: #0b1f3a;
-  overflow: hidden;
-  cursor: crosshair;
 }
 
-.life-field {
-  position: absolute;
-  inset: 0;
+.life-panel-img img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: center top;
   display: block;
 }
 
@@ -457,10 +441,9 @@ body {
     gap: 14px;
     padding: 14px;
   }
-  .species-focus-mark {
+  .species-focus img {
     width: 88px;
     height: 118px;
-    font-size: 40px;
   }
   .life-tabs {
     grid-template-columns: 1fr;
@@ -475,7 +458,7 @@ body {
   .life-panel {
     grid-template-columns: 1fr;
   }
-  .life-panel-visual {
+  .life-panel-img {
     min-height: 220px;
   }
   .life-panel-copy {
@@ -557,13 +540,28 @@ body {
   );
 }
 
-.billion-flock {
+.billion-swarm {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  display: block;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.billion-swarm-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(88px, 16vw, 160px);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 6px;
+  border: 2px solid rgba(247, 243, 236, 0.18);
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.45s ease;
+  will-change: transform, opacity;
 }
 
 .billion-copy {
@@ -629,17 +627,12 @@ body {
   margin-bottom: 18px;
 }
 
-.billion-record-mark {
+.billion-record-top img {
   width: 88px;
   height: 112px;
+  object-fit: cover;
+  object-position: center top;
   border: 2px solid #0b1f3a;
-  background: linear-gradient(160deg, #00a896, #0057ff);
-  display: grid;
-  place-items: center;
-  color: #f7f3ec;
-  font-size: 42px;
-  font-weight: 900;
-  letter-spacing: -0.04em;
 }
 
 .billion-record-eyebrow {
@@ -742,13 +735,15 @@ body {
   .billion-track {
     height: 340vh;
   }
+  .billion-swarm-img {
+    width: clamp(72px, 22vw, 110px);
+  }
   .billion-record-top {
     grid-template-columns: 72px 1fr;
   }
-  .billion-record-mark {
+  .billion-record-top img {
     width: 72px;
     height: 96px;
-    font-size: 34px;
   }
   .billion-hint {
     bottom: 52px;
@@ -767,6 +762,9 @@ body {
   .billion-stage {
     min-height: 100svh;
     padding: 72px 0;
+  }
+  .billion-swarm-img {
+    transition: none;
   }
   .billion-hint {
     display: none;

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { FlockField } from "~/components/FlockField";
 import { colors } from "~/lib/theme";
 
 type Stage = {
@@ -8,6 +7,7 @@ type Stage = {
   title: string;
   body: string;
   count: number;
+  images: { src: string; alt: string }[];
 };
 
 const STAGES: Stage[] = [
@@ -15,29 +15,71 @@ const STAGES: Stage[] = [
     id: "billion",
     label: "THE SCALE",
     title: "ONE BILLION LIVES",
-    body: "A living field of animals — too many to hold in mind. Move your cursor. Watch them respond.",
+    body: "Herds. Flocks. Colonies. Companions. A number so large it stops feeling like anyone.",
     count: 1_000_000_000,
+    images: [
+      { src: "/images/animals/cattle.png", alt: "Cattle" },
+      { src: "/images/animals/sheep.png", alt: "Sheep" },
+      { src: "/images/animals/chicken.png", alt: "Chicken" },
+      { src: "/images/animals/horse.png", alt: "Horse" },
+      { src: "/images/animals/pig.png", alt: "Pig" },
+      { src: "/images/animals/goat.png", alt: "Goat" },
+      { src: "/images/animals/duck.png", alt: "Duck" },
+      { src: "/images/animals/dog.png", alt: "Dog" },
+      { src: "/images/animals/cat.png", alt: "Cat" },
+      { src: "/images/animals/camel.png", alt: "Camel" },
+      { src: "/images/animals/bee.png", alt: "Bee" },
+      { src: "/images/animals/eagle.png", alt: "Eagle" },
+    ],
   },
   {
     id: "herds",
     label: "THE HERDS",
     title: "LIVESTOCK AT SCALE",
-    body: "The cloud tightens into herds. Cattle. Sheep. Horses. Lives carried by a few pairs of human hands.",
+    body: "Cattle on the range. Sheep on the hillside. Horses in the dust. Millions of lives carried by a few pairs of human hands.",
     count: 412_000_000,
+    images: [
+      { src: "/images/animals/cattle.png", alt: "Cattle" },
+      { src: "/images/animals/sheep.png", alt: "Sheep" },
+      { src: "/images/animals/horse.png", alt: "Horse" },
+      { src: "/images/animals/pig.png", alt: "Pig" },
+      { src: "/images/animals/goat.png", alt: "Goat" },
+      { src: "/images/animals/buffalo.png", alt: "Buffalo" },
+      { src: "/images/animals/donkey.png", alt: "Donkey" },
+      { src: "/images/animals/camel.png", alt: "Camel" },
+    ],
   },
   {
     id: "flocks",
     label: "THE FLOCKS",
     title: "BIRDS IN MOTION",
-    body: "Then bands of birds — the ones that feed cities, and the ones that still need a chart when something goes wrong.",
+    body: "Chickens, ducks, geese, and raptors. Flocks that feed cities and birds that still need a chart when something goes wrong.",
     count: 88_000_000,
+    images: [
+      { src: "/images/animals/chicken.png", alt: "Chicken" },
+      { src: "/images/animals/duck.png", alt: "Duck" },
+      { src: "/images/animals/goose.png", alt: "Goose" },
+      { src: "/images/animals/turkey.png", alt: "Turkey" },
+      { src: "/images/animals/eagle.png", alt: "Eagle" },
+      { src: "/images/animals/parrot.png", alt: "Parrot" },
+      { src: "/images/animals/pigeon.png", alt: "Pigeon" },
+      { src: "/images/animals/owl.png", alt: "Owl" },
+    ],
   },
   {
     id: "companions",
     label: "THE COMPANIONS",
     title: "THE ONES AT HOME",
-    body: "Fewer now. Dogs. Cats. Rabbits. The animals whose names we know — and whose history still gets lost between clinics.",
+    body: "Dogs. Cats. Rabbits. The animals whose names we know, whose history still gets lost between clinics.",
     count: 1_240,
+    images: [
+      { src: "/images/animals/dog.png", alt: "Dog" },
+      { src: "/images/animals/cat.png", alt: "Cat" },
+      { src: "/images/animals/rabbit.png", alt: "Rabbit" },
+      { src: "/images/animals/ferret.png", alt: "Ferret" },
+      { src: "/images/animals/guinea_pig.png", alt: "Guinea Pig" },
+      { src: "/images/animals/hamster.png", alt: "Hamster" },
+    ],
   },
   {
     id: "one",
@@ -45,13 +87,15 @@ const STAGES: Stage[] = [
     title: "THEN JUST ONE",
     body: "A single animal. A single caretaker. A history that should never reset at the clinic door.",
     count: 1,
+    images: [{ src: "/images/animals/dog.png", alt: "Dog" }],
   },
   {
     id: "record",
     label: "THE RECORD",
     title: "HER MEMORY, MADE VISIBLE",
-    body: "This is what one billion becomes for: a medical record that travels with the animal — so the next vet already knows.",
+    body: "This is what one billion becomes for: a medical record that travels with the animal, so the next vet already knows.",
     count: 1,
+    images: [{ src: "/images/animals/dog.png", alt: "Dog" }],
   },
 ];
 
@@ -61,7 +105,7 @@ const RECORD = {
   age: "7 years",
   id: "BA-000000001",
   lines: [
-    { k: "Vaccines", v: "Rabies · Distemper · Bordetella — Mar 2024" },
+    { k: "Vaccines", v: "Rabies · Distemper · Bordetella, Mar 2024" },
     { k: "Finding", v: "Early osteoarthritis, left hip" },
     { k: "Plan", v: "Weight protocol · NSAID trial · Recheck 90 days" },
     { k: "Shared", v: "Clinic Nairobi → Specialist Kentucky" },
@@ -120,7 +164,10 @@ export function BillionToOneSection() {
       const rect = track.getBoundingClientRect();
       const viewH = window.innerHeight;
       const total = Math.max(1, rect.height - viewH);
-      setProgress(clamp(-rect.top / total));
+      const p = clamp(-rect.top / total);
+      setProgress(p);
+      // Pin the story viewport for the whole tall track (sticky can fail
+      // if any ancestor sets overflow-x; fixed is the reliable fallback).
       if (rect.top > 0) setPinMode("before");
       else if (rect.bottom >= viewH) setPinMode("pin");
       else setPinMode("after");
@@ -151,7 +198,7 @@ export function BillionToOneSection() {
 
   const showRecord = current.id === "record" || reduceMotion;
   const showOne = current.id === "one" || showRecord || count <= 1.5;
-  const flockProgress = reduceMotion ? 1 : progress;
+  const images = current.images;
 
   return (
     <section
@@ -172,11 +219,34 @@ export function BillionToOneSection() {
         }`}
       >
         <div className="billion-stage">
-          <FlockField
-            progress={flockProgress}
-            className="billion-flock"
-            interactive={!reduceMotion && !showRecord}
-          />
+          <div className="billion-swarm" aria-hidden="true">
+            {images.map((img, i) => {
+              const angle = (i / Math.max(images.length, 1)) * Math.PI * 2;
+              const radius =
+                showOne && images.length === 1
+                  ? 0
+                  : 100 + (i % 3) * 34 + (1 - progress) * 50;
+              const x = Math.cos(angle + progress * 2.2) * radius;
+              const y = Math.sin(angle + progress * 1.6) * radius * 0.7;
+              const scale =
+                showOne && images.length === 1
+                  ? 1.4
+                  : 0.52 + (i % 4) * 0.09;
+              return (
+                <img
+                  key={`${img.src}-${i}`}
+                  src={img.src}
+                  alt=""
+                  className="billion-swarm-img"
+                  style={{
+                    transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${scale})`,
+                    opacity: showRecord ? 0.16 : 0.9,
+                    zIndex: showOne ? 3 : 1,
+                  }}
+                />
+              );
+            })}
+          </div>
 
           <div className={`billion-copy${showRecord ? " is-hidden" : ""}`}>
             <p
@@ -230,9 +300,7 @@ export function BillionToOneSection() {
           >
             <div className="billion-record-card">
               <div className="billion-record-top">
-                <div className="billion-record-mark" aria-hidden="true">
-                  <span>M</span>
-                </div>
+                <img src="/images/animals/dog.png" alt="Mira" />
                 <div>
                   <p className="billion-record-eyebrow">Patient record</p>
                   <h3>{RECORD.name}</h3>
@@ -266,9 +334,7 @@ export function BillionToOneSection() {
           </div>
 
           {!reduceMotion && progress < 0.92 && !showRecord ? (
-            <p className="billion-hint">
-              Scroll to zoom in · move cursor to disturb the field
-            </p>
+            <p className="billion-hint">Keep scrolling. Still in this story.</p>
           ) : null}
         </div>
       </div>

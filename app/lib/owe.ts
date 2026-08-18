@@ -15,7 +15,7 @@ export const OWE_ITEMS: OweItem[] = [
   {
     number: "02",
     heading: "THE ANIMAL",
-    body: "An animal cannot ask for help. It cannot describe where it hurts, how long it has hurt, what changed. The medical record is its voice — the only way its history can speak across time, across vets, across borders.",
+    body: "An animal cannot ask for help. It cannot describe where it hurts, how long it has hurt, what changed. The medical record is its voice, the only way its history can speak across time, across vets, across borders.",
     species: "EQUINE · BOVINE · OVINE",
   },
   {
