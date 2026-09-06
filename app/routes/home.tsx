@@ -2,11 +2,11 @@ import { useRef } from "react";
 import { BillionToOneSection } from "~/components/BillionToOneSection";
 import { JoinSection } from "~/components/JoinSection";
 import { LifespanSection } from "~/components/LifespanSection";
+import { OweSection } from "~/components/OweSection";
 import { SiteFooter } from "~/components/SiteFooter";
 import { SpeciesSection } from "~/components/SpeciesSection";
 import { ZoonoticSection } from "~/components/ZoonoticSection";
 import { useTrailImages } from "~/hooks/useTrailImages";
-import { OWE_ITEMS } from "~/lib/owe";
 import { OPENANIMAL_URL, OPENVET_URL } from "~/lib/seo";
 import { SPECIES } from "~/lib/species";
 import { colors, gradients } from "~/lib/theme";
@@ -414,85 +414,7 @@ export default function Home(_props: Route.ComponentProps) {
       <LifespanSection />
       <ZoonoticSection />
 
-      <section
-        className="sec-pad"
-        style={{ backgroundColor: colors.paleBlue }}
-        aria-labelledby="owe-heading"
-      >
-        <div style={{ maxWidth: 1160, margin: "0 auto" }}>
-          <h2
-            id="owe-heading"
-            className="reveal"
-            style={{
-              fontSize: "clamp(28px, 4vw, 52px)",
-              fontWeight: 900,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.02,
-              marginBottom: 48,
-            }}
-          >
-            What we owe them
-          </h2>
-          {OWE_ITEMS.map((item) => (
-            <div
-              key={item.number}
-              className="reveal"
-              style={{
-                padding: "32px 0",
-                borderTop: "1px solid rgba(11,31,58,0.11)",
-              }}
-            >
-              <div className="ob-header">
-                <p
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 800,
-                    letterSpacing: "0.08em",
-                    color: colors.inkMuted,
-                    paddingTop: 3,
-                  }}
-                >
-                  {item.number}
-                </p>
-                <div>
-                  <h3
-                    style={{
-                      fontSize: "clamp(17px, 1.8vw, 21px)",
-                      fontWeight: 900,
-                      letterSpacing: "-0.01em",
-                      lineHeight: 1.25,
-                    }}
-                  >
-                    {item.heading}
-                  </h3>
-                  <p
-                    style={{
-                      marginTop: 6,
-                      fontSize: 12,
-                      fontWeight: 600,
-                      letterSpacing: "0.04em",
-                      color: colors.blue,
-                    }}
-                  >
-                    {item.species}
-                  </p>
-                </div>
-              </div>
-              <p
-                style={{
-                  fontSize: "clamp(15px, 1.7vw, 18px)",
-                  fontWeight: 500,
-                  lineHeight: 1.7,
-                  color: colors.navy,
-                }}
-              >
-                {item.body}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
+      <OweSection />
       <SpeciesSection />
       <JoinSection />
       <SiteFooter />

@@ -64,3 +64,46 @@ export function websiteJsonLd() {
     },
   };
 }
+
+/**
+ * Plain answers to the questions a person or an answer engine actually asks
+ * about this page. Every claim here is also stated in the page copy.
+ */
+export function faqJsonLd() {
+  const qa: [string, string][] = [
+    [
+      "What is Billion Animals?",
+      "Billion Animals is an initiative of OpenVet to give animals a medical history that follows them through life, and to help medicine learn from what happens to them. The goal is a billion animals with better medical histories and longer, healthier lives.",
+    ],
+    [
+      "Who runs Billion Animals?",
+      `It is an OpenVet initiative. ${COMPANY_SENTENCE}`,
+    ],
+    [
+      "Does one billion mean a billion records have been collected?",
+      "No. It is a goal, not a count of records collected. There are two ambitions: a medical history for a billion animals, and a measurable improvement in their lives.",
+    ],
+    [
+      "How does it begin?",
+      "OpenVet helps veterinarians during care, and OpenAnimal helps owners through daily life. Together they are the start of a medical history that connects a recommendation with what happened next.",
+    ],
+    [
+      "Why do animal medical records matter to human health?",
+      "More than 6 in 10 known infectious diseases in people can spread from animals, and around 3 in 4 new or emerging ones come from animals, according to the CDC. Earlier detection in animal populations protects human ones.",
+    ],
+    [
+      "Which animals does it cover?",
+      "Companion animals, production animals, large animals, birds, aquatic species, reptiles, exotics and wildlife. Every animal is entrusted to someone.",
+    ],
+  ];
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: qa.map(([question, answer]) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: { "@type": "Answer", text: answer },
+    })),
+  };
+}
