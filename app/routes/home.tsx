@@ -34,26 +34,29 @@ const PRODUCTS = [
   },
 ] as const;
 
-/** The OV lettermark. The only brand shape on the page. */
+/**
+ * The OpenVet OV mark -- the only brand shape on the page.
+ *
+ * The source asset is OpenVet's forest green (#0C4A2B). It is knocked out to
+ * white here rather than shown in green: the page deliberately carries no
+ * green, and this matches OpenVet's own dark-surface treatment of the mark.
+ */
 function OvMark() {
   return (
-    <span
+    <img
+      src="/images/openvet-mark.png"
+      alt=""
       aria-hidden="true"
+      width={28}
+      height={28}
       style={{
-        display: "inline-grid",
-        placeItems: "center",
-        width: 26,
-        height: 26,
-        border: "1.5px solid currentColor",
-        borderRadius: 3,
-        fontSize: 11,
-        fontWeight: 800,
-        letterSpacing: "0.04em",
+        display: "block",
+        width: 28,
+        height: 28,
         flexShrink: 0,
+        filter: "brightness(0) invert(1)",
       }}
-    >
-      OV
-    </span>
+    />
   );
 }
 
