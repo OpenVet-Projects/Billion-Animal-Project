@@ -9,7 +9,7 @@ import { useTrailImages } from "~/hooks/useTrailImages";
 import { OWE_ITEMS } from "~/lib/owe";
 import { OPENANIMAL_URL, OPENVET_URL } from "~/lib/seo";
 import { SPECIES } from "~/lib/species";
-import { colors } from "~/lib/theme";
+import { colors, gradients } from "~/lib/theme";
 import type { Route } from "./+types/home";
 
 const TRAIL_IMAGES = [
@@ -95,10 +95,7 @@ export default function Home(_props: Route.ComponentProps) {
       <section
         ref={heroRef}
         className="ba-hero"
-        style={{
-          background:
-            "linear-gradient(155deg, #011510 0%, #063d32 42%, #00a896 78%, #0057ff 100%)",
-        }}
+        style={{ background: gradients.hero }}
         aria-label="Hero"
       >
         {Array.from({ length: 14 }, (_, i) => {

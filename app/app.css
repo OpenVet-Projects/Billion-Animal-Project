@@ -290,7 +290,7 @@ body {
   bottom: 0;
   z-index: 40;
   margin-top: 28px;
-  background: linear-gradient(135deg, #011510, #0b1f3a 60%, #0057ff);
+  background: linear-gradient(135deg, #060e22, #0b1f3a 60%, #0057ff);
   border-top: 2px solid #00a896;
   padding: 16px 20px;
   padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
@@ -494,7 +494,7 @@ body {
 .billion-track {
   position: relative;
   height: 380vh;
-  background: #011510;
+  background: #060e22;
 }
 
 .billion-sticky {
@@ -529,9 +529,9 @@ body {
   overflow: hidden;
   background: linear-gradient(
     155deg,
-    #011510 0%,
-    #0b1f3a 42%,
-    #063d32 72%,
+    #060e22 0%,
+    #0b1f3a 40%,
+    #35506b 72%,
     #0057ff 130%
   );
 }

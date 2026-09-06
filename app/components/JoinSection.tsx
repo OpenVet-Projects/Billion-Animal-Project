@@ -1,5 +1,5 @@
 import { useFetcher } from "react-router";
-import { colors } from "~/lib/theme";
+import { colors, gradients } from "~/lib/theme";
 import type { WaitlistResult } from "~/routes/waitlist";
 
 const ROLES = [
@@ -44,8 +44,7 @@ export function JoinSection() {
       id="join"
       className="sec-pad"
       style={{
-        background:
-          "linear-gradient(135deg, #011510 0%, #063d32 50%, #0057ff 100%)",
+        background: gradients.join,
         color: colors.cream,
       }}
       aria-labelledby="join-heading"
