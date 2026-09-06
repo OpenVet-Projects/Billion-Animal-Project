@@ -20,7 +20,7 @@ export const LIFESPAN_STEPS: LifespanStep[] = [
   {
     n: "03",
     title: "Cross-species",
-    body: "What is proven in sheep informs the goat, the alpaca, the yak. Most species have no evidence base of their own.",
+    body: "What is proven in sheep informs the goat, the alpaca, the yak. Outside a handful of species, there is very little published evidence to work from.",
     at: 26,
   },
   {
@@ -32,7 +32,7 @@ export const LIFESPAN_STEPS: LifespanStep[] = [
   {
     n: "01",
     title: "Major diseases",
-    body: "Cancer, arthritis, heart disease, diabetes. Millions of cases show which breeds, which early signs, which intervention at which stage.",
+    body: "Cancer, arthritis, heart disease, diabetes. Read at scale, case records can show which breeds are predisposed, which early signs get missed, and which intervention helps at which stage.",
     at: 60,
   },
   {
