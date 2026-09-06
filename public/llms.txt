@@ -1,0 +1,54 @@
+# Billion Animals
+
+> An OpenVet initiative for a billion animals with better medical histories and
+> longer, healthier lives.
+
+Billion Animals is an initiative of OpenVet. OpenVet is a comparative medical
+intelligence company building a living map of disease, treatment, and recovery
+across animal species. The mission is medicine for every animal on Earth.
+
+## What the initiative is
+
+The goal is a billion animals with better medical histories and longer,
+healthier lives. It is a goal, not a count of records already collected. There
+are two ambitions: a medical history for a billion animals, and a measurable
+improvement in their lives.
+
+An animal's history usually disappears when it changes clinics, moves cities,
+or sees a specialist, and what one vet learns rarely reaches the next. A
+history that follows the animal through life helps the people caring for it
+make better decisions, and studied together those histories may show how
+disease and recovery differ across animals, and what they share.
+
+## How it begins
+
+- OpenVet (https://openvet.ai) helps veterinarians during care.
+- OpenAnimal (https://openanimal.ai) helps owners through daily life.
+
+Together they are the start of a medical history that connects a
+recommendation with what happened next. A billion animals will take far more
+than one company.
+
+## Why animal medicine matters to human medicine
+
+- More than 6 in 10 known infectious diseases in people can spread from
+  animals. Source: CDC, One Health: Zoonotic Diseases.
+- Around 3 in 4 new or emerging infectious diseases in people come from
+  animals. Source: CDC / WHO.
+- Dogs develop cancers that closely resemble human ones, which is why the
+  National Cancer Institute runs a comparative oncology program with
+  veterinary clinics.
+
+## Species
+
+The initiative covers companion animals, production animals, large animals,
+birds, aquatic species, reptiles, exotics and wildlife. Every animal is
+entrusted to someone.
+
+## Contact
+
+hello@billionanimals.org
+
+## Canonical page
+
+https://www.billionanimals.org

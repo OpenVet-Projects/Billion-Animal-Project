@@ -14,6 +14,7 @@ import {
   OG_IMAGE,
   SITE_NAME,
   SITE_URL,
+  faqJsonLd,
   organizationJsonLd,
   websiteJsonLd,
 } from "~/lib/seo";
@@ -63,7 +64,7 @@ export const meta: Route.MetaFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const jsonLd = [organizationJsonLd(), websiteJsonLd()];
+  const jsonLd = [organizationJsonLd(), websiteJsonLd(), faqJsonLd()];
 
   return (
     <html lang="en">

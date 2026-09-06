@@ -306,66 +306,6 @@ body {
   flex-wrap: wrap;
 }
 
-.life-tabs {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.life-tab {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: flex-start;
-  padding: 14px 12px;
-  border: 2px solid;
-  background: transparent;
-  cursor: pointer;
-  font-family: inherit;
-  text-align: left;
-  min-width: 0;
-}
-
-.life-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 28px;
-  align-items: stretch;
-  border: 2px solid #0b1f3a;
-  background: #f7f3ec;
-  overflow: hidden;
-}
-
-.life-panel-img {
-  position: relative;
-  min-height: 280px;
-  background: #0b1f3a;
-}
-
-.life-panel-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-
-.life-panel-badge {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  color: #f7f3ec;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-  padding: 8px 12px;
-}
-
-.life-panel-copy {
-  padding: 28px 28px 28px 8px;
-}
-
 .footer-mega {
   font-size: clamp(40px, 11vw, 180px);
   font-weight: 900;
@@ -374,6 +314,173 @@ body {
   color: #0b1f3a;
   white-space: nowrap;
   padding-bottom: 0.1em;
+}
+
+/* Framed sections: "What we owe them" + "Extend the healthy part of a life" */
+.owe-frame,
+.life-frame {
+  border: 1px solid rgba(11, 31, 58, 0.22);
+  border-radius: 16px;
+  background: var(--color-cream);
+  overflow: hidden;
+}
+
+.owe-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 48px;
+  flex-wrap: wrap;
+  padding: 48px 44px 36px;
+}
+
+.owe-lead {
+  border-top: 1px solid rgba(11, 31, 58, 0.22);
+  padding: 44px;
+  background: linear-gradient(180deg, #f7f3ec 0%, #e8f2ff 100%);
+}
+
+.owe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(11, 31, 58, 0.22);
+}
+
+.owe-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 32px 28px;
+  border-right: 1px solid rgba(11, 31, 58, 0.22);
+  min-width: 0;
+}
+
+.owe-cell:last-child {
+  border-right: none;
+}
+
+.life-bar-wrap {
+  padding: 8px 44px 48px;
+}
+
+.life-bar {
+  position: relative;
+  height: 132px;
+}
+
+.life-track {
+  position: absolute;
+  inset: 74px 0 auto 0;
+  display: flex;
+  align-items: center;
+}
+
+.life-track > div:first-child {
+  height: 12px;
+  border-radius: 999px 0 0 999px;
+  background: rgba(11, 31, 58, 0.28);
+}
+
+.life-track > div:last-child {
+  height: 12px;
+  border-radius: 0 999px 999px 0;
+  background: var(--color-blue);
+}
+
+.life-scale {
+  position: absolute;
+  inset: 96px 0 auto 0;
+  display: flex;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.life-scale > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-right: 16px;
+  color: var(--color-ink-muted);
+}
+
+.life-scale > div:last-child {
+  text-align: right;
+  color: var(--color-blue);
+}
+
+.life-tick {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: var(--color-ink-muted);
+}
+
+.life-tick i {
+  width: 1px;
+  height: 46px;
+  background: rgba(11, 31, 58, 0.35);
+}
+
+.life-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid rgba(11, 31, 58, 0.22);
+}
+
+.life-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px 22px;
+  border-right: 1px solid rgba(11, 31, 58, 0.22);
+  min-width: 0;
+}
+
+.life-cell:last-child {
+  border-right: none;
+}
+
+@media (max-width: 900px) {
+  .owe-head {
+    padding: 32px 22px 26px;
+    gap: 20px;
+  }
+  .owe-lead {
+    padding: 28px 22px;
+  }
+  .owe-grid,
+  .life-grid {
+    grid-template-columns: 1fr;
+  }
+  .owe-cell,
+  .life-cell {
+    border-right: none;
+    border-bottom: 1px solid rgba(11, 31, 58, 0.22);
+  }
+  .owe-cell:last-child,
+  .life-cell:last-child {
+    border-bottom: none;
+  }
+  .life-bar-wrap {
+    padding: 8px 22px 36px;
+  }
+  .life-bar {
+    height: 118px;
+  }
+  .life-scale {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+  .life-scale > div:first-child {
+    flex-direction: column;
+    gap: 2px;
+  }
 }
 
 .zoonotic-sec {
@@ -453,25 +560,6 @@ body {
   .species-focus img {
     width: 88px;
     height: 118px;
-  }
-  .life-tabs {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-  .life-tab {
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 14px;
-  }
-  .life-panel {
-    grid-template-columns: 1fr;
-  }
-  .life-panel-img {
-    min-height: 220px;
-  }
-  .life-panel-copy {
-    padding: 20px;
   }
   .zoonotic-sec {
     padding: 56px 0 40px;

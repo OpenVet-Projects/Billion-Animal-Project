@@ -1,33 +1,42 @@
 export type OweItem = {
   number: string;
-  heading: string;
+  party: string;
+  /** The line that carries the argument. Set large. */
+  headline: string;
+  /** One supporting line underneath. */
   body: string;
-  species: string;
+};
+
+/**
+ * The animal gets the wide panel on its own: it is the argument the rest of
+ * the section supports.
+ */
+export const OWE_LEAD: OweItem = {
+  number: "02",
+  party: "The animal",
+  headline:
+    "An animal cannot ask for help. It cannot say where it hurts, how long it has hurt, what changed. The record is its voice.",
+  body: "The only way its history can speak across time, across vets, across borders.",
 };
 
 export const OWE_ITEMS: OweItem[] = [
   {
     number: "01",
-    heading: "The caretaker",
-    body: "Every creature is entrusted to someone. A child with a hamster. A farmer with a herd. A rancher alone with a thousand head of cattle and no vet for two hundred miles. That person carries a life. They deserve the best medicine on Earth.",
-    species: "Canine · Feline · Cunicular",
-  },
-  {
-    number: "02",
-    heading: "The animal",
-    body: "An animal cannot ask for help. It cannot describe where it hurts, how long it has hurt, what changed. The medical record is its voice, the only way its history can speak across time, across vets, across borders.",
-    species: "Equine · Bovine · Ovine",
+    party: "The caretaker",
+    headline:
+      "A rancher alone with a thousand head and no vet for two hundred miles.",
+    body: "A child with a hamster. A farmer with a herd. Each one carries a life, and deserves the best medicine on Earth.",
   },
   {
     number: "03",
-    heading: "The vet",
-    body: "A vet in Jakarta and a vet in Ohio should know the same things. A breakthrough in one species should reach every species. Medicine that remembers nothing is medicine that repeats every mistake. We are building the memory.",
-    species: "Porcine · Caprine · Asinine",
+    party: "The vet",
+    headline: "A vet in Jakarta and a vet in Ohio should know the same things.",
+    body: "Medicine that remembers nothing repeats every mistake. We are building the memory.",
   },
   {
     number: "04",
-    heading: "The obligation",
-    body: "An animal's history is kept by whoever is in front of it, and keeping it well does not end when the visit does. What endures is pride in becoming the kind of civilization that remembers its animals.",
-    species: "Gallus · Psittacine · Anatine",
+    party: "The obligation",
+    headline: "A civilization that remembers its animals.",
+    body: "A billion animals with better medical histories, and longer, healthier lives.",
   },
 ];

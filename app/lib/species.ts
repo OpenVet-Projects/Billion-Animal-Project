@@ -1,10 +1,13 @@
 export type SpeciesCategoryId =
   | "all"
   | "companion"
-  | "livestock"
+  | "production"
+  | "large"
   | "birds"
   | "aquatic"
-  | "exotic";
+  | "reptiles"
+  | "exotic"
+  | "wildlife";
 
 export type SpeciesCategory = {
   id: SpeciesCategoryId;
@@ -23,10 +26,13 @@ export type Species = {
 export const CATEGORIES: SpeciesCategory[] = [
   { id: "all", label: "All" },
   { id: "companion", label: "Companion" },
-  { id: "livestock", label: "Livestock" },
+  { id: "production", label: "Production" },
+  { id: "large", label: "Large animal" },
   { id: "birds", label: "Birds" },
   { id: "aquatic", label: "Aquatic" },
+  { id: "reptiles", label: "Reptiles" },
   { id: "exotic", label: "Exotic" },
+  { id: "wildlife", label: "Wildlife" },
 ];
 
 export const SPECIES: Species[] = [
@@ -35,7 +41,7 @@ export const SPECIES: Species[] = [
     common: "Horse",
     col: 0,
     img: "/images/animals/horse.png",
-    category: "livestock",
+    category: "large",
     entrusted: "A rider, a rancher, a kid at a lesson barn.",
   },
   {
@@ -43,7 +49,7 @@ export const SPECIES: Species[] = [
     common: "Cattle",
     col: 1,
     img: "/images/animals/cattle.png",
-    category: "livestock",
+    category: "production",
     entrusted: "A farmer up before dawn with a whole herd to protect.",
   },
   {
@@ -51,7 +57,7 @@ export const SPECIES: Species[] = [
     common: "Pig",
     col: 2,
     img: "/images/animals/pig.png",
-    category: "livestock",
+    category: "production",
     entrusted: "A smallholder who knows every animal by temperament.",
   },
   {
@@ -59,7 +65,7 @@ export const SPECIES: Species[] = [
     common: "Sheep",
     col: 3,
     img: "/images/animals/sheep.png",
-    category: "livestock",
+    category: "production",
     entrusted: "A shepherd watching weather and pasture like vital signs.",
   },
   {
@@ -67,7 +73,7 @@ export const SPECIES: Species[] = [
     common: "Goat",
     col: 4,
     img: "/images/animals/goat.png",
-    category: "livestock",
+    category: "production",
     entrusted: "A homestead family counting on milk, land, and luck.",
   },
   {
@@ -75,7 +81,7 @@ export const SPECIES: Species[] = [
     common: "Donkey",
     col: 0,
     img: "/images/animals/donkey.png",
-    category: "livestock",
+    category: "large",
     entrusted: "A working partner on rough ground where trucks can't go.",
   },
   {
@@ -83,7 +89,7 @@ export const SPECIES: Species[] = [
     common: "Camel",
     col: 1,
     img: "/images/animals/camel.png",
-    category: "livestock",
+    category: "large",
     entrusted: "A herder crossing distances where clinics are rare.",
   },
   {
@@ -91,7 +97,7 @@ export const SPECIES: Species[] = [
     common: "Alpaca",
     col: 2,
     img: "/images/animals/alpaca.png",
-    category: "livestock",
+    category: "large",
     entrusted: "A fiber farmer reading body language like a chart.",
   },
   {
@@ -99,7 +105,7 @@ export const SPECIES: Species[] = [
     common: "Buffalo",
     col: 3,
     img: "/images/animals/buffalo.png",
-    category: "livestock",
+    category: "production",
     entrusted: "A dairy family whose livelihood walks on four legs.",
   },
   {
@@ -155,7 +161,7 @@ export const SPECIES: Species[] = [
     common: "Chicken",
     col: 0,
     img: "/images/animals/chicken.png",
-    category: "birds",
+    category: "production",
     entrusted: "A backyard flock keeper watching for the first limp.",
   },
   {
@@ -163,7 +169,7 @@ export const SPECIES: Species[] = [
     common: "Duck",
     col: 1,
     img: "/images/animals/duck.png",
-    category: "birds",
+    category: "production",
     entrusted: "Someone balancing pond, feed, and fragile ducklings.",
   },
   {
@@ -171,7 +177,7 @@ export const SPECIES: Species[] = [
     common: "Turkey",
     col: 2,
     img: "/images/animals/turkey.png",
-    category: "birds",
+    category: "production",
     entrusted: "A farm hand responsible when the flock thins.",
   },
   {
@@ -179,7 +185,7 @@ export const SPECIES: Species[] = [
     common: "Goose",
     col: 3,
     img: "/images/animals/goose.png",
-    category: "birds",
+    category: "production",
     entrusted: "A guardian of birds that guard the yard in return.",
   },
   {
@@ -227,7 +233,7 @@ export const SPECIES: Species[] = [
     common: "Owl",
     col: 4,
     img: "/images/animals/owl.png",
-    category: "birds",
+    category: "wildlife",
     entrusted: "A rehabber standing between injury and release.",
   },
   {
@@ -259,7 +265,7 @@ export const SPECIES: Species[] = [
     common: "Tortoise",
     col: 3,
     img: "/images/animals/tortoise.png",
-    category: "exotic",
+    category: "reptiles",
     entrusted: "A multi-decade promise to a life that moves slowly.",
   },
   {
@@ -267,7 +273,7 @@ export const SPECIES: Species[] = [
     common: "Iguana",
     col: 4,
     img: "/images/animals/iguana.png",
-    category: "exotic",
+    category: "reptiles",
     entrusted: "An exotic-pet owner hunting scarce reptile expertise.",
   },
   {
@@ -275,7 +281,7 @@ export const SPECIES: Species[] = [
     common: "Gecko",
     col: 0,
     img: "/images/animals/gecko.png",
-    category: "exotic",
+    category: "reptiles",
     entrusted: "A night-shift caretaker watching temperature like a vital.",
   },
   {
@@ -283,7 +289,7 @@ export const SPECIES: Species[] = [
     common: "Corn Snake",
     col: 1,
     img: "/images/animals/corn_snake.png",
-    category: "exotic",
+    category: "reptiles",
     entrusted: "Someone translating shed, appetite, and stillness into care.",
   },
   {
@@ -325,7 +331,7 @@ export const SPECIES: Species[] = [
     common: "Llama",
     col: 1,
     img: "/images/animals/llama.png",
-    category: "livestock",
+    category: "large",
     entrusted: "A ranch hand reading herd dynamics for early distress.",
   },
   {
@@ -333,7 +339,7 @@ export const SPECIES: Species[] = [
     common: "Yak",
     col: 2,
     img: "/images/animals/yak.png",
-    category: "livestock",
+    category: "production",
     entrusted: "A high-country herder far from specialty medicine.",
   },
   {
@@ -365,7 +371,7 @@ export const SPECIES: Species[] = [
     common: "Hedgehog",
     col: 1,
     img: "/images/animals/hedgehog.png",
-    category: "companion",
+    category: "exotic",
     entrusted: "An exotic-mammal owner navigating sparse protocols.",
   },
   {
@@ -381,7 +387,7 @@ export const SPECIES: Species[] = [
     common: "Quail",
     col: 3,
     img: "/images/animals/quail.png",
-    category: "birds",
+    category: "production",
     entrusted: "A small-flock farmer watching for silent disease.",
   },
   {
@@ -389,7 +395,7 @@ export const SPECIES: Species[] = [
     common: "Fox",
     col: 4,
     img: "/images/animals/fox.png",
-    category: "exotic",
+    category: "wildlife",
     entrusted: "A wildlife rehabber racing the clock of trauma.",
   },
   {
@@ -397,7 +403,7 @@ export const SPECIES: Species[] = [
     common: "Otter",
     col: 0,
     img: "/images/animals/otter.png",
-    category: "aquatic",
+    category: "wildlife",
     entrusted: "A rehab team managing aquatic mammals with few precedents.",
   },
   {
@@ -413,7 +419,7 @@ export const SPECIES: Species[] = [
     common: "Bee",
     col: 2,
     img: "/images/animals/bee.png",
-    category: "exotic",
+    category: "production",
     entrusted: "A beekeeper treating the colony as one living patient.",
   },
   {
@@ -421,7 +427,7 @@ export const SPECIES: Species[] = [
     common: "Deer",
     col: 3,
     img: "/images/animals/deer.png",
-    category: "exotic",
+    category: "wildlife",
     entrusted: "A wildlife responder when the wild meets the road.",
   },
   {
@@ -429,8 +435,24 @@ export const SPECIES: Species[] = [
     common: "Eagle",
     col: 4,
     img: "/images/animals/eagle.png",
-    category: "birds",
+    category: "wildlife",
     entrusted: "A raptor rehabber restoring flight and dignity.",
+  },
+  {
+    latin: "Lupine",
+    common: "Wolf",
+    col: 1,
+    img: "/images/billion/wolf-hero.png",
+    category: "wildlife",
+    entrusted: "A field vet, a sanctuary keeper, a rehabilitation team.",
+  },
+  {
+    latin: "Panthera",
+    common: "Jaguar",
+    col: 0,
+    img: "/images/billion/jaguar-thriving.png",
+    category: "wildlife",
+    entrusted: "A reserve vet who may see this animal once in a career.",
   },
 ];
 

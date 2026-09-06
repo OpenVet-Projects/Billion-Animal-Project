@@ -68,7 +68,7 @@ export const ZOONOTIC_DISEASES: ZoonoticDisease[] = [
   {
     id: "influenza",
     label: "Influenza",
-    stat: "290,000–650,000 human deaths per year",
+    stat: "290,000 to 650,000 human deaths per year",
     source: "Originated in birds and pigs",
     species: ["porcine", "equine", "gallus", "anatine", "canine"],
     type: "zoonotic",

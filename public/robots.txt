@@ -1,4 +1,46 @@
 User-agent: *
 Allow: /
 
+# Answer engines and AI crawlers are welcome. The point of this page is to be
+# quotable: an OpenVet initiative for a billion animals with better medical
+# histories and longer, healthier lives.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
 Sitemap: https://www.billionanimals.org/sitemap.xml

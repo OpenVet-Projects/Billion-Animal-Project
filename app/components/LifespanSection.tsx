@@ -1,158 +1,88 @@
-import { useState } from "react";
 import { colors } from "~/lib/theme";
-import { LIFESPAN_TABS } from "~/lib/lifespan";
+import { LIFESPAN_STEPS, RECORDED_TODAY } from "~/lib/lifespan";
+import { FONT_MONO, body, cardTitle, lead, sectionTitle } from "~/lib/type";
+import { Eyebrow } from "./Eyebrow";
 
 export function LifespanSection() {
-  const [active, setActive] = useState(0);
-  const tab = LIFESPAN_TABS[active];
-
   return (
     <section
       className="sec-pad"
-      style={{
-        backgroundColor: colors.cream,
-        borderTop: `2px solid ${colors.navy}`,
-      }}
+      style={{ backgroundColor: colors.cream }}
+      aria-labelledby="lifespan-heading"
     >
       <div style={{ maxWidth: 1160, margin: "0 auto" }}>
-        <div className="reveal" style={{ marginBottom: 36 }}>
-          <p
-            style={{
-              fontSize: 13,
-              fontWeight: 700,
-              letterSpacing: "0.04em",
-              color: colors.inkMuted,
-              marginBottom: 12,
-            }}
-          >
-            What it means
-          </p>
-          <h2
-            style={{
-              fontSize: "clamp(34px, 4.5vw, 58px)",
-              fontWeight: 900,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.02,
-              marginBottom: 20,
-              color: colors.navy,
-            }}
-          >
-            Extend a
-            <br />
-            <span style={{ color: colors.blue }}>healthy</span>
-            <br />
-            lifespan.
-          </h2>
-          <p
-            style={{
-              fontSize: "clamp(16px, 1.2vw, 17px)",
-              lineHeight: 1.75,
-              color: colors.inkMuted,
-              maxWidth: 640,
-            }}
-          >
-            Longer, healthier lives, not more years of suffering. Tap a path to
-            see how records make that possible.
-          </p>
-        </div>
-
-        <div
-          className="life-tabs"
-          role="tablist"
-          aria-label="Healthy lifespan mechanisms"
-        >
-          {LIFESPAN_TABS.map((item, index) => (
-            <button
-              key={item.n}
-              type="button"
-              role="tab"
-              aria-selected={index === active}
-              className="life-tab"
-              onClick={() => setActive(index)}
-              style={{
-                borderColor:
-                  index === active ? item.accent : "rgba(11,31,58,0.18)",
-                color: index === active ? item.accent : colors.navy,
-                backgroundColor:
-                  index === active ? "rgba(0,87,255,0.06)" : "transparent",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: 11,
-                  fontWeight: 900,
-                  letterSpacing: "0.12em",
-                }}
+        <div className="life-frame reveal">
+          <header className="owe-head">
+            <div>
+              <Eyebrow style={{ marginBottom: 20 }}>What it means</Eyebrow>
+              <h2
+                id="lifespan-heading"
+                style={{ ...sectionTitle, color: colors.navy, maxWidth: 640 }}
               >
-                {item.n}
-              </span>
-              <span
-                style={{
-                  fontSize: 12,
-                  fontWeight: 800,
-                  letterSpacing: "0.04em",
-                }}
-              >
-                {item.title}
-              </span>
-            </button>
-          ))}
-        </div>
-
-        <div className="life-panel reveal" key={tab.n}>
-          <div className="life-panel-img">
-            <img src={tab.img} alt={tab.imgAlt} />
-            <div
-              className="life-panel-badge"
-              style={{ backgroundColor: tab.accent }}
+                Extend the healthy part of a life.
+              </h2>
+            </div>
+            <p
+              style={{ ...lead, maxWidth: 340, color: colors.inkMuted }}
             >
-              {tab.n}
+              Not more years of suffering. Records move the same five things on
+              every animal that has one.
+            </p>
+          </header>
+
+          <div className="life-bar-wrap">
+            <div className="life-bar" role="img" aria-label="A life, from birth to the years a medical record could add">
+              {LIFESPAN_STEPS.map((step) => (
+                <div
+                  key={step.n}
+                  className="life-tick"
+                  style={{ left: `${step.at}%` }}
+                >
+                  <span style={{ fontFamily: FONT_MONO }}>{step.n}</span>
+                  <i />
+                </div>
+              ))}
+              <div className="life-track">
+                <div style={{ width: `${RECORDED_TODAY}%` }} />
+                <div style={{ width: `${100 - RECORDED_TODAY}%` }} />
+              </div>
+              <div className="life-scale" style={{ fontFamily: FONT_MONO }}>
+                <div style={{ width: `${RECORDED_TODAY}%` }}>
+                  <span>Birth</span>
+                  <span>Life as recorded today</span>
+                </div>
+                <div style={{ width: `${100 - RECORDED_TODAY}%` }}>
+                  <span>The years we are arguing for</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="life-panel-copy">
-            <h3
-              style={{
-                fontSize: "clamp(20px, 2.5vw, 28px)",
-                fontWeight: 900,
-                letterSpacing: "-0.01em",
-                color: colors.navy,
-                marginBottom: 14,
-              }}
-            >
-              {tab.title}
-            </h3>
-            <p
-              style={{
-                fontSize: "clamp(17px, 1.6vw, 20px)",
-                fontWeight: 700,
-                lineHeight: 1.45,
-                color: colors.navy,
-                marginBottom: 14,
-              }}
-            >
-              {tab.blurb}
-            </p>
-            <p
-              style={{
-                fontSize: 15,
-                lineHeight: 1.75,
-                color: colors.inkMuted,
-              }}
-            >
-              {tab.body}
-            </p>
-            {tab.source ? (
-              <p
+
+          <div className="life-grid">
+            {LIFESPAN_STEPS.map((step, i) => (
+              <div
+                key={step.n}
+                className="life-cell"
                 style={{
-                  marginTop: 14,
-                  fontSize: 13,
-                  lineHeight: 1.6,
-                  color: colors.inkMuted,
+                  backgroundColor:
+                    i === LIFESPAN_STEPS.length - 1 ? "#fcfbf8" : "transparent",
                 }}
               >
-                Source: {tab.source}
-              </p>
-            ) : null}
+                <p
+                  style={{
+                    fontFamily: FONT_MONO,
+                    fontSize: 12,
+                    color: colors.inkMuted,
+                  }}
+                >
+                  {step.n}
+                </p>
+                <h3 style={{ ...cardTitle, fontSize: 18, color: colors.navy }}>
+                  {step.title}
+                </h3>
+                <p style={{ ...body, color: colors.inkMuted }}>{step.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
