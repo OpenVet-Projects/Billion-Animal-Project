@@ -40,11 +40,11 @@ export const meta: Route.MetaFunction = () => [
   { name: "description", content: DEFAULT_DESCRIPTION },
   { name: "theme-color", content: "#f7f3ec" },
   { name: "robots", content: "index, follow, max-image-preview:large" },
-  { name: "author", content: SITE_NAME },
+  { name: "author", content: "OpenVet" },
   {
     name: "keywords",
     content:
-      "Billion Animal Project, animal medical records, veterinary medicine, One Health, zoonotic disease, OpenAnimal, OpenVet, animal health data",
+      "Billion Animals, OpenVet, OpenAnimal, animal medical records, veterinary medicine, One Health, zoonotic disease, comparative medicine",
   },
   { property: "og:type", content: "website" },
   { property: "og:site_name", content: SITE_NAME },
@@ -55,7 +55,7 @@ export const meta: Route.MetaFunction = () => [
   { property: "og:image", content: OG_IMAGE },
   { property: "og:image:width", content: "1200" },
   { property: "og:image:height", content: "630" },
-  { property: "og:image:alt", content: "The Billion Animal Project" },
+  { property: "og:image:alt", content: "Billion Animals" },
   { name: "twitter:card", content: "summary_large_image" },
   { name: "twitter:title", content: DEFAULT_TITLE },
   { name: "twitter:description", content: DEFAULT_DESCRIPTION },
@@ -101,7 +101,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     message = error.status === 404 ? "Page not found" : `Error ${error.status}`;
     details =
       error.status === 404
-        ? "That page does not exist on the Billion Animal Project site."
+        ? "That page does not exist on the Billion Animals site."
         : error.statusText || details;
   } else if (import.meta.env.DEV && error instanceof Error) {
     details = error.message;
@@ -123,21 +123,19 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       <div>
         <p
           style={{
-            fontSize: 12,
-            fontWeight: 900,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
+            fontSize: 13,
+            fontWeight: 700,
+            letterSpacing: "0.03em",
             color: "#3f5d78",
             marginBottom: 16,
           }}
         >
-          Billion Animal Project
+          Billion Animals
         </p>
         <h1
           style={{
             fontSize: "clamp(32px, 6vw, 56px)",
             fontWeight: 900,
-            textTransform: "uppercase",
             letterSpacing: "-0.02em",
             marginBottom: 16,
           }}
@@ -151,11 +149,9 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
           href="/"
           style={{
             color: "#0057ff",
-            fontWeight: 900,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
+            fontWeight: 700,
             textDecoration: "none",
-            fontSize: 13,
+            fontSize: 15,
           }}
         >
           Back to home →

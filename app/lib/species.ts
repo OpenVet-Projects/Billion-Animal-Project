@@ -21,12 +21,12 @@ export type Species = {
 };
 
 export const CATEGORIES: SpeciesCategory[] = [
-  { id: "all", label: "ALL" },
-  { id: "companion", label: "COMPANION" },
-  { id: "livestock", label: "LIVESTOCK" },
-  { id: "birds", label: "BIRDS" },
-  { id: "aquatic", label: "AQUATIC" },
-  { id: "exotic", label: "EXOTIC" },
+  { id: "all", label: "All" },
+  { id: "companion", label: "Companion" },
+  { id: "livestock", label: "Livestock" },
+  { id: "birds", label: "Birds" },
+  { id: "aquatic", label: "Aquatic" },
+  { id: "exotic", label: "Exotic" },
 ];
 
 export const SPECIES: Species[] = [
