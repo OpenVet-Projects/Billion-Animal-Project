@@ -40,30 +40,24 @@ export function SpeciesSection() {
             style={{
               fontSize: "clamp(22px, 3vw, 40px)",
               fontWeight: 900,
-              textTransform: "uppercase",
               letterSpacing: "-0.01em",
+              lineHeight: 1.08,
               marginBottom: 10,
               color: colors.navy,
             }}
           >
-            EVERY SPECIES.
-            <br />
-            <span style={{ color: colors.inkMuted, fontWeight: 700 }}>
-              WHO YOU CARE FOR.
-            </span>
+            Every animal someone cares for.
           </h2>
           <p
             style={{
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: 600,
-              letterSpacing: "0.06em",
               color: colors.inkMuted,
-              textTransform: "uppercase",
               lineHeight: 1.6,
               marginBottom: 8,
             }}
           >
-            40+ species. Each one entrusted to a human being.
+            Each one entrusted to a human being.
           </p>
           <p
             style={{
@@ -111,23 +105,21 @@ export function SpeciesSection() {
             <div>
               <p
                 style={{
-                  fontSize: 11,
-                  fontWeight: 900,
-                  letterSpacing: "0.14em",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
                   color: colors.blue,
-                  textTransform: "uppercase",
                   marginBottom: 6,
                 }}
               >
                 {selected.includes(focus.latin)
-                  ? "IN YOUR CARE"
-                  : "CARED FOR BY"}
+                  ? "In your care"
+                  : "Cared for by"}
               </p>
               <h3
                 style={{
                   fontSize: "clamp(22px, 3vw, 32px)",
                   fontWeight: 900,
-                  textTransform: "uppercase",
                   letterSpacing: "-0.02em",
                   marginBottom: 8,
                   color: colors.navy,
@@ -138,10 +130,9 @@ export function SpeciesSection() {
               <p
                 style={{
                   fontSize: 13,
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
+                  fontWeight: 600,
+                  letterSpacing: "0.02em",
                   color: colors.inkMuted,
-                  textTransform: "uppercase",
                   marginBottom: 12,
                 }}
               >
@@ -200,9 +191,8 @@ export function SpeciesSection() {
                   <p
                     style={{
                       fontSize: 11,
-                      fontWeight: 900,
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase",
+                      fontWeight: 800,
+                      letterSpacing: "0.02em",
                       color: colors.textOnDark,
                       lineHeight: 1.2,
                     }}
@@ -213,8 +203,7 @@ export function SpeciesSection() {
                     style={{
                       fontSize: 9,
                       fontWeight: 600,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.04em",
+                      letterSpacing: "0.02em",
                       color: colors.textOnDarkSoft,
                       marginTop: 2,
                     }}
@@ -234,10 +223,9 @@ export function SpeciesSection() {
             <div>
               <p
                 style={{
-                  fontSize: 11,
-                  fontWeight: 900,
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
                   color: colors.teal,
                   marginBottom: 4,
                 }}
@@ -271,10 +259,8 @@ export function SpeciesSection() {
                   background: "transparent",
                   border: `1px solid ${colors.textOnDarkSoft}`,
                   color: colors.textOnDark,
-                  fontWeight: 800,
-                  fontSize: 12,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
+                  fontWeight: 700,
+                  fontSize: 13,
                   cursor: "pointer",
                   fontFamily: "inherit",
                 }}
@@ -287,14 +273,12 @@ export function SpeciesSection() {
                   padding: "12px 18px",
                   backgroundColor: colors.blue,
                   color: colors.textOnDark,
-                  fontWeight: 900,
-                  fontSize: 12,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
+                  fontWeight: 800,
+                  fontSize: 13,
                   textDecoration: "none",
                 }}
               >
-                Get invited →
+                Be part of it →
               </a>
             </div>
           </div>

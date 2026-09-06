@@ -18,32 +18,30 @@ export function LifespanSection() {
         <div className="reveal" style={{ marginBottom: 36 }}>
           <p
             style={{
-              fontSize: 12,
-              fontWeight: 900,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: "0.04em",
               color: colors.inkMuted,
               marginBottom: 12,
             }}
           >
-            WHAT IT MEANS
+            What it means
           </p>
           <h2
             style={{
               fontSize: "clamp(34px, 4.5vw, 58px)",
               fontWeight: 900,
               letterSpacing: "-0.02em",
-              textTransform: "uppercase",
-              lineHeight: 0.96,
+              lineHeight: 1.02,
               marginBottom: 20,
               color: colors.navy,
             }}
           >
-            EXTEND A
+            Extend a
             <br />
-            <span style={{ color: colors.blue }}>HEALTHY</span>
+            <span style={{ color: colors.blue }}>healthy</span>
             <br />
-            LIFESPAN.
+            lifespan.
           </h2>
           <p
             style={{
@@ -116,7 +114,6 @@ export function LifespanSection() {
               style={{
                 fontSize: "clamp(20px, 2.5vw, 28px)",
                 fontWeight: 900,
-                textTransform: "uppercase",
                 letterSpacing: "-0.01em",
                 color: colors.navy,
                 marginBottom: 14,
@@ -144,6 +141,18 @@ export function LifespanSection() {
             >
               {tab.body}
             </p>
+            {tab.source ? (
+              <p
+                style={{
+                  marginTop: 14,
+                  fontSize: 13,
+                  lineHeight: 1.6,
+                  color: colors.inkMuted,
+                }}
+              >
+                Source: {tab.source}
+              </p>
+            ) : null}
           </div>
         </div>
       </div>

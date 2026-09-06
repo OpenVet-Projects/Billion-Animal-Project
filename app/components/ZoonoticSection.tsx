@@ -183,7 +183,7 @@ function ZoonoticDiagram({
         letterSpacing={2}
         fontFamily="Helvetica Neue, Arial, sans-serif"
       >
-        HUMAN
+        Human
       </text>
       <text
         x={human.x}
@@ -371,7 +371,7 @@ function ZoonoticDiagram({
             letterSpacing={2}
             fontFamily="Helvetica Neue, Arial, sans-serif"
           >
-            ANIMALS
+            Animals
           </text>
           <rect x={20} y={278} width={110} height={22} rx={3} fill={m.bg} />
           <text
@@ -384,7 +384,7 @@ function ZoonoticDiagram({
             letterSpacing={2}
             fontFamily="Helvetica Neue, Arial, sans-serif"
           >
-            DISEASES
+            Diseases
           </text>
         </>
       ) : (
@@ -399,7 +399,7 @@ function ZoonoticDiagram({
             letterSpacing={2}
             fontFamily="Helvetica Neue, Arial, sans-serif"
           >
-            ANIMALS
+            Animals
           </text>
           <text
             x={diseasePos(0).x}
@@ -411,7 +411,7 @@ function ZoonoticDiagram({
             letterSpacing={2}
             fontFamily="Helvetica Neue, Arial, sans-serif"
           >
-            DISEASES
+            Diseases
           </text>
         </>
       )}
@@ -470,30 +470,28 @@ export function ZoonoticSection() {
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px 52px" }}>
         <p
           style={{
-            fontSize: 12,
-            fontWeight: 900,
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
+            fontSize: 13,
+            fontWeight: 700,
+            letterSpacing: "0.05em",
             color: m.soft,
             marginBottom: 16,
           }}
         >
-          ONE HEALTH
+          One Health
         </p>
         <h2
           style={{
             fontSize: "clamp(32px, 4.5vw, 58px)",
             fontWeight: 900,
             letterSpacing: "-0.02em",
-            textTransform: "uppercase",
-            lineHeight: 0.94,
+            lineHeight: 1.02,
             color: m.text,
             marginBottom: 28,
           }}
         >
-          ANIMAL DISEASES
+          Animal diseases
           <br />
-          ARE <span style={{ color: colors.teal }}>HUMAN DISEASES.</span>
+          are <span style={{ color: colors.teal }}>human diseases.</span>
         </h2>
 
         <div
@@ -506,18 +504,18 @@ export function ZoonoticSection() {
         >
           {[
             {
-              n: "6 IN 10",
+              n: "6 in 10",
               label:
                 "known human infectious diseases can spread from animals",
               src: "CDC",
             },
             {
-              n: "3 IN 4",
+              n: "3 in 4",
               label: "new or emerging human diseases originate in animals",
               src: "WHO",
             },
             {
-              n: "4 IN 10",
+              n: "4 in 10",
               label:
                 "top human cancers have direct parallels in dogs and cats",
               src: "NIH",
@@ -540,8 +538,7 @@ export function ZoonoticSection() {
                   marginTop: 8,
                   fontSize: 13,
                   fontWeight: 700,
-                  letterSpacing: "0.04em",
-                  textTransform: "uppercase",
+                  letterSpacing: "0.02em",
                   color: m.dim,
                   lineHeight: 1.5,
                 }}
@@ -598,12 +595,11 @@ export function ZoonoticSection() {
               style={{
                 fontSize: 11,
                 fontWeight: 700,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
+                letterSpacing: "0.02em",
                 color: m.dim,
               }}
             >
-              Shared Disease (same in animals + humans)
+              Shared disease (same in animals and humans)
             </span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -619,8 +615,7 @@ export function ZoonoticSection() {
               style={{
                 fontSize: 11,
                 fontWeight: 700,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
+                letterSpacing: "0.02em",
                 color: m.dim,
               }}
             >
@@ -645,13 +640,12 @@ export function ZoonoticSection() {
               style={{
                 fontSize: 12,
                 fontWeight: 900,
-                letterSpacing: "0.15em",
+                letterSpacing: "0.04em",
                 color: detail.type === "shared" ? colors.teal : m.zoonoticHi,
-                textTransform: "uppercase",
                 marginBottom: 6,
               }}
             >
-              {detail.type === "shared" ? "SHARED DISEASE" : "ZOONOTIC DISEASE"}{" "}
+              {detail.type === "shared" ? "Shared disease" : "Zoonotic disease"}{" "}
               · {detail.label}
             </p>
             <p
@@ -697,8 +691,7 @@ export function ZoonoticSection() {
           style={{
             fontSize: 12,
             fontWeight: 700,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
+            letterSpacing: "0.02em",
             color: m.meta,
           }}
         >

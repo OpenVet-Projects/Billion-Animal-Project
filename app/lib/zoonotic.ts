@@ -43,7 +43,7 @@ export const ZOONOTIC_SPECIES: ZoonoticSpecies[] = [
 export const ZOONOTIC_DISEASES: ZoonoticDisease[] = [
   {
     id: "cancer",
-    label: "CANCER",
+    label: "Cancer",
     stat: "1 in 3 dogs develops cancer in their lifetime",
     source: "Same disease, same biology as human cancer",
     species: ["canine", "feline", "equine", "bovine"],
@@ -51,7 +51,7 @@ export const ZOONOTIC_DISEASES: ZoonoticDisease[] = [
   },
   {
     id: "heart_disease",
-    label: "HEART DISEASE",
+    label: "Heart disease",
     stat: "10% of all dogs have heart disease",
     source: "Shared cardiovascular biology with humans",
     species: ["canine", "feline", "equine"],
@@ -59,7 +59,7 @@ export const ZOONOTIC_DISEASES: ZoonoticDisease[] = [
   },
   {
     id: "diabetes",
-    label: "DIABETES",
+    label: "Diabetes",
     stat: "1 in 300 dogs; 1 in 230 cats",
     source: "Same insulin failure mechanism as Type 1 & 2",
     species: ["canine", "feline"],
@@ -67,7 +67,7 @@ export const ZOONOTIC_DISEASES: ZoonoticDisease[] = [
   },
   {
     id: "influenza",
-    label: "INFLUENZA",
+    label: "Influenza",
     stat: "290,000–650,000 human deaths per year",
     source: "Originated in birds and pigs",
     species: ["porcine", "equine", "gallus", "anatine", "canine"],
@@ -75,7 +75,7 @@ export const ZOONOTIC_DISEASES: ZoonoticDisease[] = [
   },
   {
     id: "coronavirus",
-    label: "CORONAVIRUS",
+    label: "Coronavirus",
     stat: "COVID-19: 7+ million deaths worldwide",
     source: "Confirmed zoonotic animal origin",
     species: ["exotic", "bovine", "feline"],
@@ -83,7 +83,7 @@ export const ZOONOTIC_DISEASES: ZoonoticDisease[] = [
   },
   {
     id: "rabies",
-    label: "RABIES",
+    label: "Rabies",
     stat: "59,000 human deaths per year",
     source: "99% transmitted by dogs",
     species: ["canine", "feline", "exotic"],
@@ -91,7 +91,7 @@ export const ZOONOTIC_DISEASES: ZoonoticDisease[] = [
   },
   {
     id: "salmonella",
-    label: "SALMONELLA",
+    label: "Salmonella",
     stat: "1.35 billion human cases per year",
     source: "Livestock are the primary reservoir",
     species: ["gallus", "bovine", "porcine", "anatine"],
@@ -99,7 +99,7 @@ export const ZOONOTIC_DISEASES: ZoonoticDisease[] = [
   },
   {
     id: "arthritis",
-    label: "ARTHRITIS",
+    label: "Arthritis",
     stat: "80% of dogs over 8 years are affected",
     source: "Same joint degeneration as human osteoarthritis",
     species: ["canine", "feline", "equine", "bovine"],

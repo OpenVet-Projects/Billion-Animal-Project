@@ -13,8 +13,8 @@ type Stage = {
 const STAGES: Stage[] = [
   {
     id: "billion",
-    label: "THE SCALE",
-    title: "ONE BILLION LIVES",
+    label: "The scale",
+    title: "One billion lives",
     body: "Herds. Flocks. Colonies. Companions. A number so large it stops feeling like anyone.",
     count: 1_000_000_000,
     images: [
@@ -34,8 +34,8 @@ const STAGES: Stage[] = [
   },
   {
     id: "herds",
-    label: "THE HERDS",
-    title: "LIVESTOCK AT SCALE",
+    label: "The herds",
+    title: "Livestock at scale",
     body: "Cattle on the range. Sheep on the hillside. Horses in the dust. Millions of lives carried by a few pairs of human hands.",
     count: 412_000_000,
     images: [
@@ -51,8 +51,8 @@ const STAGES: Stage[] = [
   },
   {
     id: "flocks",
-    label: "THE FLOCKS",
-    title: "BIRDS IN MOTION",
+    label: "The flocks",
+    title: "Birds in motion",
     body: "Chickens, ducks, geese, and raptors. Flocks that feed cities and birds that still need a chart when something goes wrong.",
     count: 88_000_000,
     images: [
@@ -68,8 +68,8 @@ const STAGES: Stage[] = [
   },
   {
     id: "companions",
-    label: "THE COMPANIONS",
-    title: "THE ONES AT HOME",
+    label: "The companions",
+    title: "The ones at home",
     body: "Dogs. Cats. Rabbits. The animals whose names we know, whose history still gets lost between clinics.",
     count: 1_240,
     images: [
@@ -83,16 +83,16 @@ const STAGES: Stage[] = [
   },
   {
     id: "one",
-    label: "ONE LIFE",
-    title: "THEN JUST ONE",
+    label: "One life",
+    title: "Then just one",
     body: "A single animal. A single caretaker. A history that should never reset at the clinic door.",
     count: 1,
     images: [{ src: "/images/animals/dog.png", alt: "Dog" }],
   },
   {
     id: "record",
-    label: "THE RECORD",
-    title: "HER MEMORY, MADE VISIBLE",
+    label: "The record",
+    title: "Her memory, made visible",
     body: "This is what one billion becomes for: a medical record that travels with the animal, so the next vet already knows.",
     count: 1,
     images: [{ src: "/images/animals/dog.png", alt: "Dog" }],
@@ -100,7 +100,7 @@ const STAGES: Stage[] = [
 ];
 
 const RECORD = {
-  name: "MIRA",
+  name: "Mira",
   species: "Canine · Mixed",
   age: "7 years",
   id: "BA-000000001",
@@ -251,10 +251,9 @@ export function BillionToOneSection() {
           <div className={`billion-copy${showRecord ? " is-hidden" : ""}`}>
             <p
               style={{
-                fontSize: 12,
-                fontWeight: 900,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
+                fontSize: 13,
+                fontWeight: 700,
+                letterSpacing: "0.06em",
                 color: colors.textOnDarkSoft,
                 marginBottom: 14,
               }}
@@ -272,8 +271,7 @@ export function BillionToOneSection() {
                 fontSize: "clamp(28px, 5vw, 52px)",
                 fontWeight: 900,
                 letterSpacing: "-0.02em",
-                textTransform: "uppercase",
-                lineHeight: 0.95,
+                lineHeight: 1.02,
                 color: colors.textOnDark,
                 marginTop: 18,
                 marginBottom: 14,
@@ -319,7 +317,7 @@ export function BillionToOneSection() {
                 ))}
               </div>
               <p className="billion-record-foot">
-                One animal. One unbroken history. Repeated a billion times.
+                One animal. One unbroken history. The ambition is a billion of them.
               </p>
             </div>
           </div>

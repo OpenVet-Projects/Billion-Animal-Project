@@ -6,7 +6,18 @@ export type WaitlistResult =
   | { ok: true; type: string }
   | { ok: false; error: string };
 
-const ROLES = new Set(["clinic", "vet", "owner", "advocate"]);
+const ROLES = new Set([
+  "clinic",
+  "vet",
+  "owner",
+  "researcher",
+  "organization",
+  "other",
+]);
+
+/** Free-text bound. Keeps a pasted essay out of the row. */
+const MAX_CONTRIBUTION = 2000;
+const MAX_NAME = 200;
 
 export async function action({ request }: ActionFunctionArgs) {
   if (request.method !== "POST") {
@@ -17,16 +28,25 @@ export async function action({ request }: ActionFunctionArgs) {
   const email = String(form.get("email") || "")
     .trim()
     .toLowerCase();
+  const name = String(form.get("name") || "")
+    .trim()
+    .slice(0, MAX_NAME);
   const type = String(form.get("type") || "clinic").trim();
+  const contribution = String(form.get("contribution") || "")
+    .trim()
+    .slice(0, MAX_CONTRIBUTION);
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return data(
-      { ok: false, error: "Please enter a valid email." } satisfies WaitlistResult,
+      {
+        ok: false,
+        error: "Please enter a valid email.",
+      } satisfies WaitlistResult,
       { status: 400 },
     );
   }
 
-  const role = ROLES.has(type) ? type : "clinic";
+  const role = ROLES.has(type) ? type : "other";
   const url =
     process.env.SUPABASE_URL ?? "https://zgrktbhvjgzeidvtvbxz.supabase.co";
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -39,7 +59,7 @@ export async function action({ request }: ActionFunctionArgs) {
     return data(
       {
         ok: false,
-        error: "Waitlist is not configured yet. Try again soon.",
+        error: "The form is not configured yet. Try again soon.",
       } satisfies WaitlistResult,
       { status: 503 },
     );
@@ -52,7 +72,9 @@ export async function action({ request }: ActionFunctionArgs) {
   const { error } = await supabase.from("study_waitlist").upsert(
     {
       email,
+      name,
       role,
+      contribution,
       source: "billionanimals.org",
     },
     { onConflict: "email" },
@@ -63,7 +85,7 @@ export async function action({ request }: ActionFunctionArgs) {
     return data(
       {
         ok: false,
-        error: "Could not save your invite. Try again shortly.",
+        error: "Could not save your details. Try again shortly.",
       } satisfies WaitlistResult,
       { status: 502 },
     );

@@ -1,13 +1,23 @@
 export const SITE_URL = "https://www.billionanimals.org";
-export const SITE_NAME = "The Billion Animal Project";
-export const SITE_TAGLINE =
-  "Gather the medical records of one billion animals so animals live longer, healthier lives.";
+export const SITE_NAME = "Billion Animals";
+export const SITE_TAGLINE = "Medicine for every animal on Earth.";
+
+/** Canon. Used verbatim in the header, the hero and the footer. */
+export const ATTRIBUTION = "An OpenVet initiative.";
+export const FOOTER_LINE =
+  "Billion Animals is an initiative of OpenVet. Medicine for every animal on Earth.";
+export const COMPANY_SENTENCE =
+  "OpenVet is a comparative medical intelligence company building a living map of disease, treatment, and recovery across animal species.";
+
+export const OPENVET_URL = "https://openvet.ai";
+export const OPENANIMAL_URL = "https://openanimal.ai";
+export const CONTACT_EMAIL = "hello@billionanimals.org";
 
 export const DEFAULT_TITLE =
-  "The Billion Animal Project | Animal Medical Records for Longer, Healthier Lives";
+  "Billion Animals | Medicine for every animal on Earth";
 
 export const DEFAULT_DESCRIPTION =
-  "The Billion Animal Project is building the shared memory of animal medicine: one medical record per animal, across clinics, species, and countries, so animals live longer, healthier lives.";
+  "An OpenVet initiative for a billion animals with better medical histories and longer, healthier lives.";
 
 export const OG_IMAGE = `${SITE_URL}/images/og.jpg`;
 
@@ -16,14 +26,17 @@ export function organizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: SITE_NAME,
-    alternateName: "Billion Animal Project",
+    alternateName: "The Billion Animal Project",
     url: SITE_URL,
-    email: "hello@billionanimals.org",
+    email: CONTACT_EMAIL,
     description: DEFAULT_DESCRIPTION,
-    sameAs: [
-      "https://github.com/openvet-projects/billion-animal-project",
-      "https://openvet.com",
-    ],
+    parentOrganization: {
+      "@type": "Organization",
+      name: "OpenVet",
+      url: OPENVET_URL,
+      description: COMPANY_SENTENCE,
+    },
+    sameAs: [OPENVET_URL, OPENANIMAL_URL],
     foundingDate: "2025",
     areaServed: "Worldwide",
     knowsAbout: [
@@ -46,8 +59,8 @@ export function websiteJsonLd() {
     inLanguage: "en-US",
     publisher: {
       "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_URL,
+      name: "OpenVet",
+      url: OPENVET_URL,
     },
   };
 }
