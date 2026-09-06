@@ -10,6 +10,7 @@ import { useTrailImages } from "~/hooks/useTrailImages";
 import { OPENANIMAL_URL, OPENVET_URL } from "~/lib/seo";
 import { SPECIES } from "~/lib/species";
 import { colors, gradients } from "~/lib/theme";
+import { cardTitle, lead, sectionTitle, statement } from "~/lib/type";
 import type { Route } from "./+types/home";
 
 const TRAIL_IMAGES = [
@@ -212,22 +213,14 @@ export default function Home(_props: Route.ComponentProps) {
         <div className="reveal">
           <h2
             id="idea-heading"
-            style={{
-              fontSize: "clamp(32px, 4.6vw, 60px)",
-              fontWeight: 900,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.02,
-              marginBottom: 28,
-              maxWidth: 900,
-            }}
+            style={{ ...sectionTitle, marginBottom: 28, maxWidth: 900 }}
           >
             Every animal has a history worth keeping
           </h2>
           <p
             style={{
-              fontSize: "clamp(18px, 2vw, 24px)",
-              fontWeight: 700,
-              lineHeight: 1.45,
+              ...statement,
+              fontSize: "clamp(19px, 2.2vw, 26px)",
               marginBottom: 24,
               maxWidth: 780,
               color: colors.navy,
@@ -272,13 +265,7 @@ export default function Home(_props: Route.ComponentProps) {
         <div className="reveal">
           <h2
             id="begins-heading"
-            style={{
-              fontSize: "clamp(24px, 3vw, 38px)",
-              fontWeight: 900,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.1,
-              marginBottom: 20,
-            }}
+            style={{ ...sectionTitle, marginBottom: 20 }}
           >
             How it begins
           </h2>
@@ -324,13 +311,7 @@ export default function Home(_props: Route.ComponentProps) {
               }}
             >
               <h3
-                style={{
-                  fontSize: 19,
-                  fontWeight: 900,
-                  letterSpacing: "-0.01em",
-                  marginBottom: 6,
-                  color: colors.navy,
-                }}
+                style={{ ...cardTitle, marginBottom: 6, color: colors.navy }}
               >
                 {product.name}
               </h3>
@@ -372,10 +353,7 @@ export default function Home(_props: Route.ComponentProps) {
           <h2
             id="means-heading"
             style={{
-              fontSize: "clamp(26px, 3.4vw, 44px)",
-              fontWeight: 900,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.08,
+              ...sectionTitle,
               color: colors.textOnDark,
               marginBottom: 24,
               maxWidth: 720,
@@ -385,9 +363,8 @@ export default function Home(_props: Route.ComponentProps) {
           </h2>
           <p
             style={{
-              fontSize: "clamp(18px, 2vw, 23px)",
-              fontWeight: 700,
-              lineHeight: 1.5,
+              ...statement,
+              fontSize: "clamp(19px, 2.2vw, 26px)",
               color: colors.textOnDark,
               marginBottom: 20,
               maxWidth: 760,

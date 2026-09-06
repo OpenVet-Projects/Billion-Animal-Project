@@ -7,6 +7,7 @@ import {
   type Species,
   type SpeciesCategoryId,
 } from "~/lib/species";
+import { cardTitle, sectionTitle } from "~/lib/type";
 
 export function SpeciesSection() {
   const [filter, setFilter] = useState<SpeciesCategoryId>("all");
@@ -37,14 +38,7 @@ export function SpeciesSection() {
       <div style={{ maxWidth: 1160, margin: "0 auto" }}>
         <div className="reveal" style={{ marginBottom: 28 }}>
           <h2
-            style={{
-              fontSize: "clamp(22px, 3vw, 40px)",
-              fontWeight: 900,
-              letterSpacing: "-0.01em",
-              lineHeight: 1.08,
-              marginBottom: 10,
-              color: colors.navy,
-            }}
+            style={{ ...sectionTitle, marginBottom: 10, color: colors.navy }}
           >
             Every animal someone cares for.
           </h2>
@@ -117,13 +111,7 @@ export function SpeciesSection() {
                   : "Cared for by"}
               </p>
               <h3
-                style={{
-                  fontSize: "clamp(22px, 3vw, 32px)",
-                  fontWeight: 900,
-                  letterSpacing: "-0.02em",
-                  marginBottom: 8,
-                  color: colors.navy,
-                }}
+                style={{ ...cardTitle, marginBottom: 8, color: colors.navy }}
               >
                 {focus.common}
               </h3>

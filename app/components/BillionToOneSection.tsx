@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { colors } from "~/lib/theme";
+import { sectionTitle } from "~/lib/type";
+import { Eyebrow } from "./Eyebrow";
 
 type Stage = {
   id: string;
@@ -249,17 +251,9 @@ export function BillionToOneSection() {
           </div>
 
           <div className={`billion-copy${showRecord ? " is-hidden" : ""}`}>
-            <p
-              style={{
-                fontSize: 13,
-                fontWeight: 700,
-                letterSpacing: "0.06em",
-                color: colors.textOnDarkSoft,
-                marginBottom: 14,
-              }}
-            >
+            <Eyebrow tone="onDark" style={{ marginBottom: 14 }}>
               {current.label}
-            </p>
+            </Eyebrow>
             <div
               className="billion-count"
               style={{ color: showOne ? "#5ee0d0" : colors.textOnDark }}
@@ -268,10 +262,7 @@ export function BillionToOneSection() {
             </div>
             <h2
               style={{
-                fontSize: "clamp(28px, 5vw, 52px)",
-                fontWeight: 900,
-                letterSpacing: "-0.02em",
-                lineHeight: 1.02,
+                ...sectionTitle,
                 color: colors.textOnDark,
                 marginTop: 18,
                 marginBottom: 14,

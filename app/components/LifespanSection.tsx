@@ -1,7 +1,7 @@
 import { colors } from "~/lib/theme";
 import { LIFESPAN_STEPS, RECORDED_TODAY } from "~/lib/lifespan";
-
-const MONO = 'ui-monospace, SFMono-Regular, Menlo, monospace';
+import { FONT_MONO, body, cardTitle, lead, sectionTitle } from "~/lib/type";
+import { Eyebrow } from "./Eyebrow";
 
 export function LifespanSection() {
   return (
@@ -14,39 +14,16 @@ export function LifespanSection() {
         <div className="life-frame reveal">
           <header className="owe-head">
             <div>
-              <p
-                style={{
-                  fontFamily: MONO,
-                  fontSize: 12,
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  color: colors.blue,
-                  marginBottom: 20,
-                }}
-              >
-                What it means
-              </p>
+              <Eyebrow style={{ marginBottom: 20 }}>What it means</Eyebrow>
               <h2
                 id="lifespan-heading"
-                style={{
-                  fontSize: "clamp(32px, 5vw, 56px)",
-                  fontWeight: 800,
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1.02,
-                  color: colors.navy,
-                  maxWidth: 640,
-                }}
+                style={{ ...sectionTitle, color: colors.navy, maxWidth: 640 }}
               >
                 Extend the healthy part of a life.
               </h2>
             </div>
             <p
-              style={{
-                fontSize: 16,
-                lineHeight: 1.6,
-                maxWidth: 340,
-                color: colors.inkMuted,
-              }}
+              style={{ ...lead, maxWidth: 340, color: colors.inkMuted }}
             >
               Not more years of suffering. Records move the same five things on
               every animal that has one.
@@ -61,7 +38,7 @@ export function LifespanSection() {
                   className="life-tick"
                   style={{ left: `${step.at}%` }}
                 >
-                  <span style={{ fontFamily: MONO }}>{step.n}</span>
+                  <span style={{ fontFamily: FONT_MONO }}>{step.n}</span>
                   <i />
                 </div>
               ))}
@@ -69,7 +46,7 @@ export function LifespanSection() {
                 <div style={{ width: `${RECORDED_TODAY}%` }} />
                 <div style={{ width: `${100 - RECORDED_TODAY}%` }} />
               </div>
-              <div className="life-scale" style={{ fontFamily: MONO }}>
+              <div className="life-scale" style={{ fontFamily: FONT_MONO }}>
                 <div style={{ width: `${RECORDED_TODAY}%` }}>
                   <span>Birth</span>
                   <span>Life as recorded today</span>
@@ -93,32 +70,17 @@ export function LifespanSection() {
               >
                 <p
                   style={{
-                    fontFamily: MONO,
+                    fontFamily: FONT_MONO,
                     fontSize: 12,
                     color: colors.inkMuted,
                   }}
                 >
                   {step.n}
                 </p>
-                <h3
-                  style={{
-                    fontSize: 17,
-                    fontWeight: 700,
-                    letterSpacing: "-0.01em",
-                    color: colors.navy,
-                  }}
-                >
+                <h3 style={{ ...cardTitle, fontSize: 18, color: colors.navy }}>
                   {step.title}
                 </h3>
-                <p
-                  style={{
-                    fontSize: 15,
-                    lineHeight: 1.5,
-                    color: colors.inkMuted,
-                  }}
-                >
-                  {step.body}
-                </p>
+                <p style={{ ...body, color: colors.inkMuted }}>{step.body}</p>
               </div>
             ))}
           </div>

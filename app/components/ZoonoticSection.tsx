@@ -9,6 +9,8 @@ import {
   type ZoonoticDisease,
 } from "~/lib/zoonotic";
 import { colors } from "~/lib/theme";
+import { FONT_SANS, sectionTitle } from "~/lib/type";
+import { Eyebrow } from "./Eyebrow";
 
 function useIsNarrow(breakpoint = 768) {
   const [matches, setMatches] = useState(false);
@@ -181,7 +183,7 @@ function ZoonoticDiagram({
         fontSize={11}
         fontWeight={900}
         letterSpacing={2}
-        fontFamily="Helvetica Neue, Arial, sans-serif"
+        fontFamily={FONT_SANS}
       >
         Human
       </text>
@@ -191,7 +193,7 @@ function ZoonoticDiagram({
         textAnchor="middle"
         fill={m.meta}
         fontSize={10}
-        fontFamily="Helvetica Neue, Arial, sans-serif"
+        fontFamily={FONT_SANS}
       >
         Homo sapiens
       </text>
@@ -244,7 +246,7 @@ function ZoonoticDiagram({
                   fill={lit ? m.speciesHi : dimmed ? m.meta : m.soft}
                   fontSize={speciesFont}
                   fontWeight={lit ? 900 : 600}
-                  fontFamily="Helvetica Neue, Arial, sans-serif"
+                  fontFamily={FONT_SANS}
                   style={{ transition: "fill 0.18s" }}
                 >
                   {species.label}
@@ -255,7 +257,7 @@ function ZoonoticDiagram({
                   textAnchor="end"
                   fill={dimmed ? m.meta : m.soft}
                   fontSize={10}
-                  fontFamily="Helvetica Neue, Arial, sans-serif"
+                  fontFamily={FONT_SANS}
                   opacity={dimmed ? 0.55 : 0.85}
                 >
                   {species.sub}
@@ -270,7 +272,7 @@ function ZoonoticDiagram({
                   fill={lit ? m.speciesHi : dimmed ? m.meta : m.soft}
                   fontSize={speciesFont}
                   fontWeight={lit ? 900 : 700}
-                  fontFamily="Helvetica Neue, Arial, sans-serif"
+                  fontFamily={FONT_SANS}
                   style={{ transition: "fill 0.18s" }}
                 >
                   {species.label}
@@ -281,7 +283,7 @@ function ZoonoticDiagram({
                   textAnchor="middle"
                   fill={dimmed ? m.meta : m.soft}
                   fontSize={9}
-                  fontFamily="Helvetica Neue, Arial, sans-serif"
+                  fontFamily={FONT_SANS}
                   opacity={dimmed ? 0.55 : 0.85}
                 >
                   {species.sub}
@@ -342,7 +344,7 @@ function ZoonoticDiagram({
               fill={lit ? accentHi : dimmed ? m.meta : m.soft}
               fontSize={diseaseFont}
               fontWeight={lit ? 900 : 600}
-              fontFamily="Helvetica Neue, Arial, sans-serif"
+              fontFamily={FONT_SANS}
               style={{ transition: "fill 0.18s" }}
             >
               {disease.label}
@@ -369,7 +371,7 @@ function ZoonoticDiagram({
             fontSize={10}
             fontWeight={900}
             letterSpacing={2}
-            fontFamily="Helvetica Neue, Arial, sans-serif"
+            fontFamily={FONT_SANS}
           >
             Animals
           </text>
@@ -382,7 +384,7 @@ function ZoonoticDiagram({
             fontSize={10}
             fontWeight={900}
             letterSpacing={2}
-            fontFamily="Helvetica Neue, Arial, sans-serif"
+            fontFamily={FONT_SANS}
           >
             Diseases
           </text>
@@ -397,7 +399,7 @@ function ZoonoticDiagram({
             fontSize={10}
             fontWeight={900}
             letterSpacing={2}
-            fontFamily="Helvetica Neue, Arial, sans-serif"
+            fontFamily={FONT_SANS}
           >
             Animals
           </text>
@@ -409,7 +411,7 @@ function ZoonoticDiagram({
             fontSize={10}
             fontWeight={900}
             letterSpacing={2}
-            fontFamily="Helvetica Neue, Arial, sans-serif"
+            fontFamily={FONT_SANS}
           >
             Diseases
           </text>
@@ -468,26 +470,11 @@ export function ZoonoticSection() {
   return (
     <section className="zoonotic-sec" style={{ backgroundColor: m.bg }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px 52px" }}>
-        <p
-          style={{
-            fontSize: 13,
-            fontWeight: 700,
-            letterSpacing: "0.05em",
-            color: m.soft,
-            marginBottom: 16,
-          }}
-        >
+        <Eyebrow tone="onDark" style={{ marginBottom: 16 }}>
           One Health
-        </p>
+        </Eyebrow>
         <h2
-          style={{
-            fontSize: "clamp(32px, 4.5vw, 58px)",
-            fontWeight: 900,
-            letterSpacing: "-0.02em",
-            lineHeight: 1.02,
-            color: m.text,
-            marginBottom: 28,
-          }}
+          style={{ ...sectionTitle, color: m.text, marginBottom: 28 }}
         >
           Animal diseases
           <br />

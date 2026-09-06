@@ -1,5 +1,6 @@
 import { useFetcher } from "react-router";
 import { colors, gradients } from "~/lib/theme";
+import { lead, sectionTitle } from "~/lib/type";
 import type { WaitlistResult } from "~/routes/waitlist";
 
 const ROLES = [
@@ -53,26 +54,13 @@ export function JoinSection() {
         <h2
           id="join-heading"
           className="reveal"
-          style={{
-            fontSize: "clamp(30px, 5vw, 60px)",
-            fontWeight: 900,
-            letterSpacing: "-0.02em",
-            lineHeight: 0.98,
-            marginBottom: 18,
-            color: colors.textOnDark,
-          }}
+          style={{ ...sectionTitle, marginBottom: 18, color: colors.textOnDark }}
         >
           Be part of it.
         </h2>
         <p
           className="reveal"
-          style={{
-            fontSize: "clamp(16px, 1.6vw, 19px)",
-            fontWeight: 500,
-            lineHeight: 1.65,
-            color: colors.textOnDarkMuted,
-            marginBottom: 36,
-          }}
+          style={{ ...lead, color: colors.textOnDarkMuted, marginBottom: 36 }}
         >
           Care for animals? Study them? Build something that could help? Tell us
           where you fit.
